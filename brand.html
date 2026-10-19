@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Telo Brand Identity</title>
+<meta name="description" content="Brand identity guidelines for Telo, a preventive longevity membership: logo, color, typography, motion and applications.">
+<meta name="theme-color" content="#0E3A2D">
+<link rel="icon" href="assets/logo/telo-appicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/brand.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="wordmark" viewBox="-1 18 181 88">
+      <g fill="none" stroke="currentColor" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 24V86Q12 100 26 100H29"/><path d="M3 56H28"/>
+        <path d="M41 78H85A22 22 0 1 0 79.85 92.14"/>
+        <path d="M104 24V86Q104 100 118 100"/>
+        <path d="M172.35 72.68A22 22 0 1 1 156.32 56.65"/>
+      </g>
+      <circle cx="166.56" cy="62.44" r="4.6" fill="var(--dot, #8FD63F)"/>
+    </symbol>
+    <symbol id="ring" viewBox="0 0 64 64">
+      <path d="M55.29 26.19A24 24 0 1 1 37.81 8.71" fill="none" stroke="currentColor" stroke-width="8.4" stroke-linecap="round"/>
+      <circle cx="48.97" cy="15.03" r="5.4" fill="var(--dot, #8FD63F)"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="bnav">
+  <a href="#cover" class="bnav__logo" aria-label="Telo brand home"><svg><use href="#wordmark"/></svg><span class="mono">Brand Identity</span></a>
+  <nav class="bnav__links mono" aria-label="Sections">
+    <a href="#story">Story</a><a href="#persona">Persona</a><a href="#logo">Logo</a><a href="#color">Color</a><a href="#type">Type</a><a href="#elements">Elements</a><a href="#imagery">Imagery</a><a href="#applications">Applications</a>
+  </nav>
+  <a href="index.html" class="bnav__site">View website ↗</a>
+</header>
+
+<!-- ============ COVER ============ -->
+<section class="cover" id="cover">
+  <div class="cover__glow" aria-hidden="true"></div>
+  <div class="cover__meta mono"><span>Telo Health, Inc.</span><span>Brand Identity System</span><span>v1.0 · 2026</span></div>
+  <svg class="cover__mark" viewBox="-1 18 181 88" aria-label="telo">
+    <g fill="none" stroke="currentColor" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round">
+      <path pathLength="1" d="M12 24V86Q12 100 26 100H29"/><path pathLength="1" d="M3 56H28"/>
+      <path pathLength="1" d="M41 78H85A22 22 0 1 0 79.85 92.14"/>
+      <path pathLength="1" d="M104 24V86Q104 100 118 100"/>
+      <path pathLength="1" d="M172.35 72.68A22 22 0 1 1 156.32 56.65"/>
+    </g>
+    <circle class="cover__dot" cx="166.56" cy="62.44" r="4.6"/>
+  </svg>
+  <div class="cover__foot">
+    <p class="cover__tag">Add years. <em>Add life to them.</em></p>
+    <p class="mono">Scroll ↓</p>
+  </div>
+</section>
+
+<!-- ============ 01 STORY ============ -->
+<section class="sec" id="story">
+  <div class="wrap">
+    <header class="sec__head"><h2 data-reveal>Brand story</h2></header>
+    <div class="story">
+      <p class="story__lead" data-reveal>Most healthcare waits for something to break. <em>Telo</em> is built for the decades before that, when small, measurable changes add the most life.</p>
+      <div class="story__grid">
+        <div data-reveal><p class="mono">Mission</p><p>Make preventive, data-led medicine the default for every adult, not a luxury for a few.</p></div>
+        <div data-reveal><p class="mono">Vision</p><p>A world where people know their biological age as well as their birthday, and know how to lower it.</p></div>
+        <div data-reveal><p class="mono">Audience</p><p>Health-curious adults 30–60, and the clinics and employers who care for them.</p></div>
+        <div data-reveal><p class="mono">The name</p><p>From <b>telomeres</b>, the protective caps at the ends of our chromosomes. They shorten as we age. Telo exists to protect them.</p></div>
+      </div>
+    </div>
+
+    <div class="traits">
+      <article class="trait" data-reveal><span class="mono">A</span><h3>Precise</h3><p>Every claim is backed by a number and every number by a source. We show our working.</p></article>
+      <article class="trait" data-reveal><span class="mono">B</span><h3>Warm</h3><p>Clinical rigour without the clinic chill. We talk like a friend who happens to be a doctor.</p></article>
+      <article class="trait" data-reveal><span class="mono">C</span><h3>Optimistic</h3><p>Aging is a process you can steer, not a sentence. We frame data as a way forward.</p></article>
+      <article class="trait" data-reveal><span class="mono">D</span><h3>Calm</h3><p>Lots of white space, slow motion and quiet colour. Never fear-based, never shouty.</p></article>
+    </div>
+
+    <div class="voice" data-reveal>
+      <div class="voice__col voice__col--yes"><p class="mono">We say</p><ul><li>“Your ApoB is down 28%. The plan is working.”</li><li>“Here’s one thing to try this week.”</li><li>“Let’s retest in 12 weeks.”</li></ul></div>
+      <div class="voice__col voice__col--no"><p class="mono">We don’t say</p><ul><li>“Reverse aging forever!”</li><li>“Your results are alarming.”</li><li>“Biohack your way to 150.”</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PERSONAS ============ -->
+<section class="sec sec--bone2" id="persona">
+  <div class="wrap">
+    <header class="sec__head"><h2 data-reveal>Who we’re for</h2></header>
+    <p class="sec__intro" data-reveal>Telo sells to two audiences. The member pays with their own money and their own blood. The partner buys Telo for their patients or their people. Every design decision should make sense to both.</p>
+
+    <!-- primary persona -->
+    <article class="persona" data-reveal>
+      <div class="persona__side">
+        <figure class="persona__photo"><img src="assets/img/persona-maya.jpg" alt="Maya checking her smartwatch outdoors"><figcaption class="mono">Primary · Member</figcaption></figure>
+        <div class="persona__id">
+          <h3>Maya Lindqvist, 36</h3>
+          <p>Product director at a fintech · Brooklyn, NY</p>
+        </div>
+        <dl class="persona__facts">
+          <div><dt class="mono">Household</dt><dd>Married, one child (4)</dd></div>
+          <div><dt class="mono">Income</dt><dd>$180k+ household</dd></div>
+          <div><dt class="mono">Wears</dt><dd>Apple Watch, Oura ring</dd></div>
+          <div><dt class="mono">Spends on health</dt><dd>~$250 / month</dd></div>
+        </dl>
+      </div>
+      <div class="persona__main">
+        <blockquote class="persona__quote">“I track my sleep, my steps and my spending. Why can’t I track how I’m <em>actually aging</em>?”</blockquote>
+        <div class="persona__cols">
+          <div><p class="mono">Goals</p><ul><li>Stay sharp and energetic through her 40s and beyond</li><li>Get ahead of family history: her dad had a heart attack at 58</li><li>Data she can act on, not more anxiety</li></ul></div>
+          <div><p class="mono">Frustrations</p><ul><li>10-minute GP visits that end with “you’re fine”</li><li>Results that are “normal” but don’t explain why she’s tired</li><li>Five apps and two labs that never talk to each other</li></ul></div>
+          <div><p class="mono">Behaviours</p><ul><li>Listens to longevity podcasts on her commute</li><li>Runs three times a week, lifts twice</li><li>Researches on Reddit, decides with her partner</li></ul></div>
+          <div><p class="mono">Where she finds us</p><ul><li>Podcast ads + host reads</li><li>Instagram and newsletters</li><li>Employer benefits portal</li></ul></div>
+        </div>
+        <div class="persona__traits">
+          <div><span class="mono">Tech comfort</span><i style="--v:92%"></i></div>
+          <div><span class="mono">Time pressure</span><i style="--v:85%"></i></div>
+          <div><span class="mono">Health anxiety</span><i style="--v:38%"></i></div>
+          <div><span class="mono">Price sensitivity</span><i style="--v:34%"></i></div>
+        </div>
+        <div class="persona__win"><p class="mono">How Telo wins Maya</p><p>One clear number (her Telo age), a clinician who explains the why, and three small actions a day that fit around a full calendar. She renews when she sees the number fall.</p></div>
+      </div>
+    </article>
+
+    <!-- secondary persona -->
+    <article class="persona persona--b2b" data-reveal>
+      <div class="persona__side">
+        <figure class="persona__photo"><img src="assets/video/clinician.jpg" alt="Dr. Weber examining a patient"><figcaption class="mono">Secondary · Partner</figcaption></figure>
+        <div class="persona__id">
+          <h3>Dr. Lukas Weber, 54</h3>
+          <p>Owner, 6-physician private practice · Austin, TX</p>
+        </div>
+        <dl class="persona__facts">
+          <div><dt class="mono">Patients</dt><dd>~4,200 active</dd></div>
+          <div><dt class="mono">Decides with</dt><dd>Practice manager, CFO</dd></div>
+          <div><dt class="mono">Buying cycle</dt><dd>6–10 weeks</dd></div>
+          <div><dt class="mono">Budget</dt><dd>No capex, revenue share</dd></div>
+        </dl>
+      </div>
+      <div class="persona__main">
+        <blockquote class="persona__quote">“My patients ask about longevity every week. I can’t build a lab, an MRI network and an app on my own.”</blockquote>
+        <div class="persona__cols">
+          <div><p class="mono">Goals</p><ul><li>New cash-pay revenue as insurance margins shrink</li><li>Keep his best patients from leaving for boutique clinics</li><li>Practise the preventive medicine he trained for</li></ul></div>
+          <div><p class="mono">Frustrations</p><ul><li>No time or team to build technology</li><li>Wellness vendors with weak clinical evidence</li><li>EHR integrations that take a year</li></ul></div>
+          <div><p class="mono">What he needs to see</p><ul><li>Peer-reviewed ranges and clinical governance</li><li>HIPAA, SOC 2 and a clear data story</li><li>A pilot with numbers in 90 days</li></ul></div>
+          <div><p class="mono">Where he finds us</p><ul><li>Medical conferences + CME events</li><li>LinkedIn, peer referrals</li><li>Practice-management publications</li></ul></div>
+        </div>
+        <div class="persona__win"><p class="mono">How Telo wins Lukas</p><p>A white-label service line live in 30 days, with Telo’s lab and imaging network behind his brand and a revenue model that pays for itself in the first quarter.</p></div>
+      </div>
+    </article>
+
+    <div class="audience">
+      <div data-reveal><p class="mono">Also buying</p><p><b>Heads of People</b> at 200–5,000-person companies who want a benefit employees actually use, and can show the board fewer sick days.</p></div>
+      <div data-reveal><p class="mono">Not for</p><p>People looking for urgent or acute care, quick-fix “biohacks” or anti-aging miracles. Telo is steady, evidence-based and long-term.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 LOGO ============ -->
+<section class="sec sec--pine" id="logo">
+  <div class="wrap">
+    <header class="sec__head"><h2 data-reveal>The logo</h2></header>
+
+    <div class="concept">
+      <div class="concept__text" data-reveal>
+        <p class="lead">One ring, three meanings.</p>
+        <p>The “o” is an open ring sealed by a lime dot. It’s a <b>telomere cap</b> protecting a strand, a <b>progress ring</b> closing as your health improves, and a <b>clock face</b> for time well spent.</p>
+        <p>The rest of the wordmark is drawn from the same monoline stroke with soft, rounded terminals. The t and l end in a gentle hook, a small forward motion that echoes the ring.</p>
+      </div>
+      <div class="concept__diagram" data-reveal aria-hidden="true">
+        <svg viewBox="0 0 560 240">
+          <g class="cd-strand" fill="none" stroke="rgba(245,243,234,.35)" stroke-width="2">
+            <path d="M40 90 C90 60 130 120 180 90 S270 60 320 90"/>
+            <path d="M40 120 C90 150 130 90 180 120 S270 150 320 120"/>
+            <g stroke="rgba(245,243,234,.18)"><path d="M62 82v46M100 86v40M140 96v24M180 90v30M220 84v44M260 86v40M300 92v26"/></g>
+          </g>
+          <circle cx="40" cy="105" r="18" fill="none" stroke="#C9F26B" stroke-width="6"/>
+          <circle cx="320" cy="105" r="18" fill="none" stroke="#C9F26B" stroke-width="6"/>
+          <text x="40" y="160" fill="rgba(245,243,234,.55)" font-family="Geist Mono" font-size="11" text-anchor="middle">CAP</text>
+          <text x="180" y="40" fill="rgba(245,243,234,.55)" font-family="Geist Mono" font-size="11" text-anchor="middle">CHROMOSOME</text>
+          <text x="320" y="160" fill="rgba(245,243,234,.55)" font-family="Geist Mono" font-size="11" text-anchor="middle">CAP</text>
+          <path d="M360 105h50m-10-8 10 8-10 8" fill="none" stroke="rgba(245,243,234,.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <g transform="translate(430 45) scale(1.9)" style="color:#F5F3EA"><use href="#ring" width="64" height="64" style="--dot:#C9F26B"/></g>
+        </svg>
+      </div>
+    </div>
+
+    <!-- construction -->
+    <figure class="construct" data-reveal>
+      <div class="construct__stage">
+        <svg class="construct__svg" viewBox="-30 0 240 124">
+          <g class="cg" stroke="rgba(201,242,107,.5)" stroke-width=".35" fill="none">
+            <path d="M-30 24H210"/><path d="M-30 56H210"/><path d="M-30 100H210"/>
+            <path d="M12 0V124"/><path d="M104 0V124"/>
+            <circle cx="151" cy="78" r="22" stroke-dasharray="2 2"/><circle cx="63" cy="78" r="22" stroke-dasharray="2 2"/>
+            <path d="M151 78L172.35 72.68M151 78L156.32 56.65" stroke-dasharray="1.5 1.5"/>
+          </g>
+          <use href="#wordmark" x="-1" y="18" width="181" height="88" style="color:#F5F3EA;--dot:#C9F26B"/>
+          <g font-family="Geist Mono" font-size="4.2" fill="#C9F26B">
+            <text x="-28" y="22">ASCENDER</text><text x="-28" y="54">X-HEIGHT</text><text x="-28" y="98">BASELINE</text>
+            <text x="178" y="56">GAP 62°</text><text x="122" y="118">R = 22 · STROKE 7.2</text>
+          </g>
+        </svg>
+      </div>
+      <figcaption class="mono">Construction: 44-unit x-height · 76-unit ascender · stroke = 1/6 x-height · ring gap 62°, centred at 45°</figcaption>
+    </figure>
+
+    <!-- lockups -->
+    <div class="lockups">
+      <div class="lock lock--bone" data-reveal><svg class="lock__wm"><use href="#wordmark"/></svg><span class="mono">Primary · Pine on Bone</span></div>
+      <div class="lock lock--deep" data-reveal><svg class="lock__wm"><use href="#wordmark"/></svg><span class="mono">Reversed · Bone on Pine</span></div>
+      <div class="lock lock--lime" data-reveal><svg class="lock__wm"><use href="#wordmark"/></svg><span class="mono">Signal · Pine on Lime</span></div>
+      <div class="lock lock--photo" data-reveal><img src="assets/video/breath.jpg" alt=""><svg class="lock__wm"><use href="#wordmark"/></svg><span class="mono">On imagery · Bone, solid dot</span></div>
+      <div class="lock lock--sym" data-reveal>
+        <img src="assets/logo/telo-appicon.svg" alt="Telo app icon, bone ring on pine">
+        <img src="assets/logo/telo-appicon-lime.svg" alt="Telo app icon, pine ring on lime">
+        <svg class="lock__ring"><use href="#ring"/></svg>
+        <span class="mono">Symbol + app icons</span>
+      </div>
+      <div class="lock lock--rules" data-reveal>
+        <div class="clear"><div class="clear__box"><svg><use href="#wordmark"/></svg></div></div>
+        <div class="rules mono"><p><b>Clear space</b> = ring diameter (⌀) on all sides</p><p><b>Min size</b> 64px / 16mm wordmark · 16px symbol</p></div>
+      </div>
+    </div>
+
+    <!-- misuse -->
+    <div class="misuse">
+      <div class="mis" data-reveal><div class="mis__art"><svg style="transform:scaleX(1.5)"><use href="#wordmark"/></svg></div><p class="mono">✕ Don’t stretch</p></div>
+      <div class="mis" data-reveal><div class="mis__art"><svg style="--dot:#E5484D;color:#3A6EF5"><use href="#wordmark"/></svg></div><p class="mono">✕ Don’t recolour</p></div>
+      <div class="mis" data-reveal><div class="mis__art"><svg style="transform:rotate(-12deg)"><use href="#wordmark"/></svg></div><p class="mono">✕ Don’t rotate</p></div>
+      <div class="mis" data-reveal><div class="mis__art mis__art--busy"><svg style="color:#F5F3EA"><use href="#wordmark"/></svg></div><p class="mono">✕ Don’t place on busy colour</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 MOTION ============ -->
+<section class="sec" id="motion">
+  <div class="wrap">
+    <header class="sec__head"><h2 data-reveal>Logo in motion</h2></header>
+    <div class="motion">
+      <div class="motion__stage" data-reveal>
+        <svg class="mring" viewBox="0 0 64 64" aria-label="Animated Telo ring">
+          <circle cx="32" cy="32" r="24" class="mring__trk"/>
+          <path class="mring__arc" d="M55.29 26.19A24 24 0 1 1 37.81 8.71"/>
+          <circle class="mring__dot" cx="48.97" cy="15.03" r="5.4"/>
+        </svg>
+        <div class="mring__val"><span>72</span><small class="mono">%</small></div>
+      </div>
+      <div class="motion__ctrl" data-reveal>
+        <p class="lead">The symbol is also a component.</p>
+        <p>On screen, the ring becomes Telo’s progress indicator for loaders, scores and goals. The dot only snaps in when a goal is reached, so the brand moment marks a real achievement.</p>
+        <label class="range"><span class="mono">Progress</span><input type="range" min="0" max="100" value="72" aria-label="Ring progress"></label>
+        <button class="pill" data-replay>▶ Replay intro</button>
+        <ul class="mprinc">
+          <li><b>Ease</b><span class="mono">expo.out · cubic-bezier(.16,1,.3,1)</span></li>
+          <li><b>Duration</b><span class="mono">600ms UI · 1200ms reveal · 1700ms brand</span></li>
+          <li><b>Behaviour</b><span class="mono">grow, settle, glow. Never bounce on data.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 COLOR ============ -->
+<section class="sec sec--bone2" id="color">
+  <div class="wrap">
+    <header class="sec__head"><h2 data-reveal>Colour</h2></header>
+    <p class="sec__intro" data-reveal>A forest-floor palette: deep pine for trust, bone for calm, and one electric lime that signals life. Lime is the spice. Use it on a dot, a CTA or a good result, never as wallpaper for a whole page.</p>
+
+    <div class="swatches">
+      <button class="sw sw--pine" data-hex="#0E3A2D" data-reveal><span class="sw__name">Pine</span><span class="sw__meta mono">#0E3A2D<br>RGB 14 58 45<br>Primary · text · surfaces</span><span class="sw__copy mono">Copy</span></button>
+      <button class="sw sw--lime" data-hex="#C9F26B" data-reveal><span class="sw__name">Lime</span><span class="sw__meta mono">#C9F26B<br>RGB 201 242 107<br>Signal · CTA · highlights</span><span class="sw__copy mono">Copy</span></button>
+      <button class="sw sw--bone" data-hex="#F5F3EA" data-reveal><span class="sw__name">Bone</span><span class="sw__meta mono">#F5F3EA<br>RGB 245 243 234<br>Base · backgrounds</span><span class="sw__copy mono">Copy</span></button>
+      <button class="sw sw--forest" data-hex="#17503E" data-reveal><span class="sw__name">Forest</span><span class="sw__meta mono">#17503E<br>Secondary dark</span><span class="sw__copy mono">Copy</span></button>
+      <button class="sw sw--leaf" data-hex="#8FD63F" data-reveal><span class="sw__name">Leaf</span><span class="sw__meta mono">#8FD63F<br>Dot · positive data</span><span class="sw__copy mono">Copy</span></button>
+      <button class="sw sw--sage" data-hex="#DCE6D6" data-reveal><span class="sw__name">Sage</span><span class="sw__meta mono">#DCE6D6<br>Quiet surfaces</span><span class="sw__copy mono">Copy</span></button>
+      <button class="sw sw--butter" data-hex="#F2F5C4" data-reveal><span class="sw__name">Butter</span><span class="sw__meta mono">#F2F5C4<br>Glow highlight</span><span class="sw__copy mono">Copy</span></button>
+      <button class="sw sw--deep" data-hex="#082519" data-reveal><span class="sw__name">Deep</span><span class="sw__meta mono">#082519<br>Deepest surface</span><span class="sw__copy mono">Copy</span></button>
+    </div>
+
+    <div class="ratio" data-reveal>
+      <p class="mono">Usage ratio</p>
+      <div class="ratio__bar"><i style="--w:52%;background:var(--bone)"><span>Bone 52</span></i><i style="--w:28%;background:var(--pine);color:var(--bone)"><span>Pine 28</span></i><i style="--w:10%;background:var(--sage)"><span>Sage 10</span></i><i style="--w:7%;background:var(--lime)"><span>Lime 7</span></i><i style="--w:3%;background:var(--leaf)"></i></div>
+    </div>
+
+    <div class="grads">
+      <div class="grad grad--glow" data-reveal><span class="mono">Glow · Lime → Butter → White, radial, blurred</span></div>
+      <div class="grad grad--deep" data-reveal><span class="mono">Depth · Pine → Deep, with lime bloom</span></div>
+      <div class="grad grad--data" data-reveal><span class="mono">Data states · Watch · Normal · Optimal</span><div class="databar"></div></div>
+    </div>
+    <p class="a11y mono" data-reveal>Contrast: Pine on Bone 11.4:1 (AAA) · Pine on Lime 9.9:1 (AAA) · Bone on Pine 11.4:1 (AAA). Never set lime text on bone.</p>
+  </div>
+</section>
+
+<!-- ============ 05 TYPE ============ -->
+<section class="sec" id="type">
+  <div class="wrap">
+    <header class="sec__head"><h2 data-reveal>Typography</h2></header>
+    <div class="faces">
+      <article class="face face--sans" data-reveal>
+        <p class="mono">Primary · Geist · 300–600</p>
+        <p class="face__aa">Aa</p>
+        <p class="face__set">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 −+%↑↓</p>
+        <p class="face__use">Headlines, UI and body. Light (300–350) at display sizes with tight tracking (−3.5%); Regular for body.</p>
+      </article>
+      <article class="face face--serif" data-reveal>
+        <p class="mono">Accent · Instrument Serif Italic</p>
+        <p class="face__aa"><em>Aa</em></p>
+        <p class="face__set"><em>life · people · today<br>compounding · person</em></p>
+        <p class="face__use">One or two emotional words per headline. Never a full sentence, never in UI.</p>
+      </article>
+      <article class="face face--mono" data-reveal>
+        <p class="mono">Data · Geist Mono</p>
+        <p class="face__aa">01</p>
+        <p class="face__set">APOB 72 MG/DL<br>TELO AGE −4.6 YRS<br>SECTION LABEL</p>
+        <p class="face__use">Labels, numbers, timestamps and eyebrows. Uppercase, 12px, +2% tracking.</p>
+      </article>
+    </div>
+
+    <div class="tester" data-reveal>
+      <div class="tester__bar">
+        <label class="range"><span class="mono">Weight <b class="tw">350</b></span><input type="range" min="300" max="600" value="350" data-tw aria-label="Font weight"></label>
+        <label class="range"><span class="mono">Size <b class="ts">96</b>px</span><input type="range" min="32" max="160" value="96" data-ts aria-label="Font size"></label>
+      </div>
+      <p class="tester__text" contenteditable="true" spellcheck="false">Add years. Add <em>life</em> to them.</p>
+    </div>
+
+    <div class="scale">
+      <div data-reveal><span class="mono">Display · 120/0.98 · −3.5%</span><p style="font-size:clamp(3rem,7vw,7.5rem);font-weight:350;letter-spacing:-.035em;line-height:.98">Longevity</p></div>
+      <div data-reveal><span class="mono">H2 · 72/1 · −3.5%</span><p style="font-size:clamp(2.2rem,4vw,4.5rem);font-weight:350;letter-spacing:-.035em;line-height:1">Your body, in <em>112</em> numbers</p></div>
+      <div data-reveal><span class="mono">H3 · 28/1.2 · −2%</span><p style="font-size:1.75rem;font-weight:450;letter-spacing:-.02em">A care team that never clocks out</p></div>
+      <div data-reveal><span class="mono">Body · 18/1.55</span><p style="font-size:1.125rem;max-width:60ch;color:var(--t-2)">Telo finds what your annual check-up misses. 112 biomarkers, a full-body MRI and a clinician-led plan to keep you younger for longer.</p></div>
+      <div data-reveal><span class="mono">Label · Mono 12 · +2%</span><p class="mono" style="font-size:12px">The Telo method</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 ELEMENTS ============ -->
+<section class="sec sec--pine" id="elements">
+  <div class="wrap">
+    <header class="sec__head"><h2 data-reveal>Graphic language</h2></header>
+    <div class="els">
+      <div class="el el--glow" data-reveal><div class="el__art glowart"><i></i><i></i><i></i></div><p class="mono">01 Glow: living gradients that drift slowly, like light through leaves</p></div>
+      <div class="el" data-reveal><div class="el__art gridart"></div><p class="mono">02 Hairline grid: 1px lines at 12% opacity, like a lab notebook</p></div>
+      <div class="el" data-reveal><div class="el__art ringsart"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50"/><circle cx="60" cy="60" r="38"/><circle cx="60" cy="60" r="26"/></svg></div><p class="mono">03 Rings: progress, scores and time</p></div>
+      <div class="el" data-reveal><div class="el__art barsart"><div><span>ApoB</span><i style="--p:30%"></i></div><div><span>hs-CRP</span><i style="--p:54%"></i></div><div><span>VO₂</span><i style="--p:84%"></i></div></div><p class="mono">04 Range bars: optimal zones, not red flags</p></div>
+      <div class="el" data-reveal><div class="el__art chipsart"><span class="c1"><i></i>Optimal</span><span class="c2">Telo age −4.6</span><span class="c3">Next retest · 23d</span></div><p class="mono">05 Glass chips: floating data, blurred and soft</p></div>
+      <div class="el" data-reveal><div class="el__art pillart"><span class="pbtn">Get your Telo age <i></i></span><span class="pbtn pbtn--lime">Start Complete <i></i></span></div><p class="mono">06 Pill CTA with the pulse dot, a living signal</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 IMAGERY ============ -->
+<section class="sec" id="imagery">
+  <div class="wrap">
+    <header class="sec__head"><h2 data-reveal>Imagery</h2></header>
+    <p class="sec__intro" data-reveal>Real people in natural light, mid-motion and outdoors. Greens and soft daylight carry the palette into photography. No stock smiles, no lab-coat poses, no fear.</p>
+    <div class="imgs">
+      <figure class="img img--a" data-reveal><img src="assets/video/breath.jpg" alt="Man breathing deeply in a sunlit forest"><svg class="img__wm"><use href="#wordmark"/></svg></figure>
+      <figure class="img img--b" data-reveal><img src="assets/video/field.jpg" alt="Woman running through a sunlit meadow"><figcaption class="mono">Movement</figcaption></figure>
+      <figure class="img img--c" data-reveal><img src="assets/video/together.jpg" alt="Older couple sharing tea in a garden"><figcaption class="mono">Connection</figcaption></figure>
+      <figure class="img img--d" data-reveal><img src="assets/video/sunbeams.jpg" alt="Morning sun beams through forest trees"><figcaption class="mono">Nature</figcaption></figure>
+      <figure class="img img--e" data-reveal><img src="assets/video/lab.jpg" alt="Scientists analysing samples"><figcaption class="mono">Science, softly</figcaption></figure>
+    </div>
+    <div class="dodont">
+      <div data-reveal><p class="mono">Do</p><p>Daylight, greenery, honest skin, people mid-action, a clinician who listens.</p></div>
+      <div data-reveal><p class="mono">Don’t</p><p>Blue clinical lighting, syringes in close-up, staged smiles, anti-aging clichés.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 APPLICATIONS ============ -->
+<section class="sec sec--bone2" id="applications">
+  <div class="wrap">
+    <header class="sec__head"><h2 data-reveal>Applications</h2></header>
+    <div class="apps">
+      <!-- member card -->
+      <div class="ap ap--card" data-reveal>
+        <div class="mcard" data-tilt>
+          <div class="mcard__top"><svg class="mcard__wm"><use href="#wordmark"/></svg><span class="mono">Complete</span></div>
+          <svg class="mcard__ring"><use href="#ring"/></svg>
+          <div class="mcard__bot"><div><span class="mono">Member</span><b>Maya Lindqvist</b></div><div><span class="mono">Since</span><b>03 / 26</b></div></div>
+        </div>
+        <p class="mono ap__cap">Membership card</p>
+      </div>
+      <!-- test kit -->
+      <div class="ap ap--kit" data-reveal>
+        <div class="kit">
+          <div class="kit__lid"></div>
+          <div class="kit__face">
+            <svg class="kit__ring"><use href="#ring"/></svg>
+            <div><p class="kit__t">Telo Test</p><p class="mono">112 biomarkers · at-home kit</p></div>
+            <svg class="kit__wm"><use href="#wordmark"/></svg>
+          </div>
+        </div>
+        <p class="mono ap__cap">At-home test kit</p>
+      </div>
+      <!-- business cards -->
+      <div class="ap ap--biz" data-reveal>
+        <div class="biz biz--back"><svg><use href="#ring"/></svg></div>
+        <div class="biz biz--front">
+          <svg class="biz__wm"><use href="#wordmark"/></svg>
+          <div><b>Dr. Lena Ortiz</b><span class="mono">Longevity physician</span></div>
+          <div class="mono biz__c">lena@telo.health<br>+1 (415) 555 0142</div>
+        </div>
+        <p class="mono ap__cap">Business cards</p>
+      </div>
+      <!-- phone splash -->
+      <div class="ap ap--phone" data-reveal>
+        <div class="splash"><div class="splash__in"><svg class="splash__ring"><use href="#ring"/></svg><p class="mono">Telo age · updated</p><p class="splash__n">34.8</p></div></div>
+        <p class="mono ap__cap">App splash</p>
+      </div>
+      <!-- social -->
+      <div class="ap ap--social" data-reveal>
+        <div class="post">
+          <img src="assets/video/run.jpg" alt="">
+          <div class="post__in"><p class="post__q">Zone 2 is the most underrated <em>drug</em> there is.</p><svg class="post__wm"><use href="#wordmark"/></svg></div>
+        </div>
+        <p class="mono ap__cap">Social post</p>
+      </div>
+      <!-- signage -->
+      <div class="ap ap--sign" data-reveal>
+        <div class="sign"><img src="assets/video/clinician.jpg" alt=""><div class="sign__plate"><svg><use href="#wordmark"/></svg><span class="mono">Clinic · Floor 2</span></div></div>
+        <p class="mono ap__cap">Clinic wayfinding</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="bfoot">
+  <div class="wrap bfoot__in">
+    <svg class="bfoot__wm"><use href="#wordmark"/></svg>
+    <p>Telo is a concept brand created as a portfolio project. All names, figures and partners are fictional. Footage from Mixkit (free license).</p>
+    <a href="index.html" class="pill pill--lime">Explore the website ↗</a>
+  </div>
+</footer>
+
+<div class="toast mono" role="status" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/brand.js"></script>
+</body>
+</html>

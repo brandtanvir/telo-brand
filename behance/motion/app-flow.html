@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Telo | App prototype flow</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/app.css">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;overflow:hidden;background:#E4EBDB}
+  .stage{position:relative;width:1920px;height:1080px;overflow:hidden;background:radial-gradient(45% 60% at 62% 50%,rgba(201,242,107,.5),rgba(201,242,107,0) 70%),#E4EBDB;font-family:var(--f-sans)}
+  .phone{position:absolute;left:1080px;top:106px;width:414px;height:868px;padding:12px;border-radius:66px;background:#0B1F18;box-shadow:0 0 0 2px #2A3D35 inset,0 70px 110px -40px rgba(8,37,25,.55)}
+  .phone__in{position:relative;width:390px;height:844px;border-radius:54px;overflow:hidden;background:var(--bone)}
+  .island{position:absolute;z-index:20;top:11px;left:50%;width:122px;height:35px;margin-left:-61px;border-radius:20px;background:#0B1F18}
+  .scr{position:absolute;inset:0}
+  .copy{position:absolute;left:180px;top:0;bottom:0;width:640px;display:flex;flex-direction:column;justify-content:center}
+  .copy__label{font-family:var(--f-mono);font-size:18px;letter-spacing:.06em;text-transform:uppercase;color:#4E8A1C;margin-bottom:22px;height:24px;position:relative}
+  .copy__title{position:relative;height:220px}
+  .copy__title h2,.copy__label span{position:absolute;left:0;top:0;margin:0;opacity:0}
+  .copy__title h2{font-size:88px;line-height:.98;font-weight:300;letter-spacing:-.045em;color:var(--pine)}
+  .copy__title h2 em{font-family:var(--f-serif);font-style:italic;color:#4E8A1C}
+  .steps{display:flex;gap:10px;margin-top:40px}
+  .steps i{width:44px;height:4px;border-radius:4px;background:rgba(14,58,45,.15);overflow:hidden;position:relative}
+  .steps i b{position:absolute;inset:0;background:var(--pine);transform-origin:left;transform:scaleX(0)}
+  .brand{position:absolute;left:180px;bottom:70px;display:flex;align-items:center;gap:18px;font-family:var(--f-mono);font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--t-2)}
+  .brand svg{width:84px;color:var(--pine)}
+  .tap{position:absolute;z-index:30;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;background:rgba(201,242,107,.55);border:2px solid rgba(14,58,45,.35);opacity:0;pointer-events:none}
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="copy">
+    <div class="copy__label">
+      <span>01 · Welcome</span><span>02 · Home</span><span>03 · Biomarkers</span><span>04 · Marker detail</span><span>05 · Care team</span><span>06 · Results</span>
+    </div>
+    <div class="copy__title">
+      <h2>One promise<br>before any <em>form.</em></h2>
+      <h2>Your Telo age,<br><em>front</em> and centre.</h2>
+      <h2>112 markers,<br>scored for <em>you.</em></h2>
+      <h2>Every number<br>links to an <em>action.</em></h2>
+      <h2>A clinician,<br>not a <em>chatbot.</em></h2>
+      <h2>The moment<br>the number <em>falls.</em></h2>
+    </div>
+    <div class="steps"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div>
+  </div>
+  <div class="phone"><div class="phone__in"><span class="island"></span>
+    <div class="scr" data-screen="welcome"></div>
+    <div class="scr" data-screen="home"></div>
+    <div class="scr" data-screen="markers"></div>
+    <div class="scr" data-screen="detail"></div>
+    <div class="scr" data-screen="care"></div>
+    <div class="scr" data-screen="results"></div>
+  </div></div>
+  <div class="tap"></div>
+  <div class="brand"><svg viewBox="-1 18 181 88" fill="none"><g stroke="currentColor" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 24V86Q12 100 26 100H29"/><path d="M3 56H28"/><path d="M41 78H85A22 22 0 1 0 79.85 92.14"/><path d="M104 24V86Q104 100 118 100"/><path d="M172.35 72.68A22 22 0 1 1 156.32 56.65"/></g><circle cx="166.56" cy="62.44" r="4.6" fill="#8FD63F"/></svg>App prototype</div>
+</div>
+<script src="../js/screens.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+  // screen images inside screens.js point to assets/... relative to the deck; fix for this folder
+  document.querySelectorAll('.scr img').forEach(i => { if (!/^(https?:|data:|\.\.)/.test(i.getAttribute('src'))) i.src = '../' + i.getAttribute('src'); });
+  const scr = gsap.utils.toArray('.scr'), titles = gsap.utils.toArray('.copy__title h2'), labels = gsap.utils.toArray('.copy__label span'), bars = gsap.utils.toArray('.steps b');
+  gsap.set(scr, { xPercent: 100 }); gsap.set(scr[0], { xPercent: 0 });
+  // phone origin: left 1092, top 118 (inside bezel)
+  const tapAt = (x, y) => ({ left: 1092 + x, top: 118 + y });
+  const tl = gsap.timeline({ paused: true });
+  const hold = 2.3, tr = .75;
+  tl.from('.phone', { y: 80, opacity: 0, duration: 1, ease: 'expo.out' }, 0);
+  tl.to(titles[0], { opacity: 1, y: 0, duration: .8, ease: 'expo.out' }, .2).fromTo(titles[0], { y: 30 }, { y: 0, duration: .8, ease: 'expo.out' }, .2);
+  tl.to(labels[0], { opacity: 1, duration: .5 }, .2);
+  tl.to(bars[0], { scaleX: 1, duration: hold, ease: 'none' }, .2);
+  const taps = [[195, 640], [330, 420], [195, 290], [195, 760], [195, 520]];
+  for (let i = 1; i < scr.length; i++) {
+    const t = .2 + hold * i + tr * (i - 1);
+    const [x, y] = taps[i - 1];
+    tl.set('.tap', tapAt(x, y), t - .45)
+      .fromTo('.tap', { opacity: 0, scale: .4 }, { opacity: 1, scale: 1, duration: .22, ease: 'power2.out' }, t - .45)
+      .to('.tap', { opacity: 0, scale: 1.5, duration: .35 }, t - .2);
+    tl.to(scr[i - 1], { xPercent: -30, filter: 'brightness(.85)', duration: tr, ease: 'expo.inOut' }, t)
+      .to(scr[i], { xPercent: 0, duration: tr, ease: 'expo.inOut' }, t)
+      .to(titles[i - 1], { opacity: 0, y: -24, duration: .4, ease: 'power2.in' }, t)
+      .to(labels[i - 1], { opacity: 0, duration: .3 }, t)
+      .fromTo(titles[i], { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .8, ease: 'expo.out' }, t + .35)
+      .to(labels[i], { opacity: 1, duration: .4 }, t + .35)
+      .to(bars[i], { scaleX: 1, duration: hold + tr, ease: 'none' }, t);
+    // in-screen micro motion
+    const ring = scr[i].querySelector('.a-ring .v');
+    if (ring) { const full = ring.getAttribute('stroke-dasharray'); tl.fromTo(ring, { strokeDashoffset: full }, { strokeDashoffset: ring.getAttribute('stroke-dashoffset'), duration: 1.4, ease: 'power3.out' }, t + .4); }
+    const items = scr[i].querySelectorAll('.a-tasks li, .a-cats li, .a-msg, .a-file, .a-compare div, .a-why li');
+    if (items.length) tl.from(items, { opacity: 0, y: 14, duration: .6, stagger: .08, ease: 'expo.out' }, t + .45);
+  }
+  tl.to({}, { duration: 1.2 });
+  window.__duration = tl.duration();
+  window.__seek = t => tl.time(t, false);
+  if (!/capture/.test(location.search)) tl.repeat(-1).play();
+</script>
+</body>
+</html>

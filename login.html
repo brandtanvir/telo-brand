@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Telo | Log in or create your account</title>
+<meta name="description" content="Log in to Telo or create your membership to get your Telo age.">
+<meta name="theme-color" content="#0E3A2D">
+<link rel="icon" href="assets/logo/telo-appicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="wordmark" viewBox="-1 18 181 88">
+      <g fill="none" stroke="currentColor" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 24V86Q12 100 26 100H29"/><path d="M3 56H28"/>
+        <path d="M41 78H85A22 22 0 1 0 79.85 92.14"/>
+        <path d="M104 24V86Q104 100 118 100"/>
+        <path d="M172.35 72.68A22 22 0 1 1 156.32 56.65"/>
+      </g>
+      <circle cx="166.56" cy="62.44" r="4.6" fill="var(--dot, #8FD63F)"/>
+    </symbol>
+    <symbol id="eye" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="eye-off" viewBox="0 0 24 24"><path d="M3 3l18 18M10.6 5.1A10.8 10.8 0 0 1 12 5c6.4 0 10 7 10 7a17 17 0 0 1-3.2 4.1M6.6 6.6C3.8 8.4 2 12 2 12s3.6 7 10 7c1.9 0 3.5-.6 4.9-1.4M9.9 9.9a3 3 0 0 0 4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="check" viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="back" viewBox="0 0 16 16"><path d="M13 8H3M7 4 3 8l4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<div class="auth">
+  <!-- ============ Visual panel ============ -->
+  <aside class="visual" aria-hidden="true">
+    <video src="assets/video/sunbeams.mp4" poster="assets/video/sunbeams.jpg" autoplay muted loop playsinline></video>
+    <div class="visual__shade"></div>
+    <a href="index.html" class="visual__logo" tabindex="-1"><svg><use href="#wordmark"/></svg></a>
+    <div class="visual__body">
+      <div class="visual__card">
+        <div class="vc__ring">
+          <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" class="trk"/><circle cx="60" cy="60" r="50" class="val" pathLength="100"/></svg>
+          <b>34.8</b>
+        </div>
+        <div><p class="mono">Telo age</p><p class="vc__d">−4.6 yrs vs. calendar age</p></div>
+      </div>
+      <blockquote class="visual__quote">“The first health thing that feels like it’s on <em>my side</em>.”</blockquote>
+      <p class="mono visual__by">Priya S., member since 2025</p>
+    </div>
+  </aside>
+
+  <!-- ============ Form panel ============ -->
+  <main class="panel">
+    <header class="panel__top">
+      <a href="index.html" class="panel__logo" aria-label="Telo home"><svg><use href="#wordmark"/></svg></a>
+      <a href="index.html" class="panel__back"><svg><use href="#back"/></svg>Back to site</a>
+    </header>
+
+    <div class="panel__inner">
+      <div class="seg" role="tablist" aria-label="Account">
+        <button role="tab" id="tab-login" aria-controls="view-login" aria-selected="true" data-mode="login">Log in</button>
+        <button role="tab" id="tab-signup" aria-controls="view-signup" aria-selected="false" data-mode="signup">Create account</button>
+        <span class="seg__ind" aria-hidden="true"></span>
+      </div>
+
+      <!-- ===== LOGIN ===== -->
+      <section class="view" id="view-login" role="tabpanel" aria-labelledby="tab-login">
+        <h1 class="title">Welcome <em>back</em></h1>
+        <p class="sub">Log in to see your Telo age, results and plan.</p>
+
+        <div class="social">
+          <button type="button" class="sbtn" data-social="Apple"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.37 12.6c.02 2.4 2.1 3.2 2.13 3.21-.02.06-.33 1.14-1.1 2.26-.66.97-1.35 1.94-2.43 1.96-1.06.02-1.4-.63-2.62-.63-1.21 0-1.6.61-2.6.65-1.05.04-1.85-1.05-2.52-2.02-1.37-1.98-2.42-5.6-1.01-8.04.7-1.21 1.95-1.98 3.3-2 1.03-.02 2 .7 2.63.7.63 0 1.81-.86 3.05-.73.52.02 1.98.21 2.92 1.59-.08.05-1.74 1.02-1.75 3.05zM14.37 5.3c.56-.68.93-1.62.83-2.56-.8.03-1.77.53-2.35 1.21-.52.6-.97 1.56-.85 2.48.9.07 1.81-.45 2.37-1.13z"/></svg>Continue with Apple</button>
+          <button type="button" class="sbtn" data-social="Google"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M21.6 12.2c0-.7-.1-1.4-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/><path fill="#34A853" d="M12 22c2.7 0 5-.9 6.6-2.5l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path fill="#FBBC05" d="M6.4 13.9a6 6 0 0 1 0-3.8V7.5H3.1a10 10 0 0 0 0 9l3.3-2.6z"/><path fill="#EA4335" d="M12 6c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.5l3.3 2.6C7.2 7.8 9.4 6 12 6z"/></svg>Continue with Google</button>
+        </div>
+        <div class="or"><span>or with email</span></div>
+
+        <form class="form" id="form-login" novalidate>
+          <div class="field">
+            <label for="li-email">Email</label>
+            <input id="li-email" type="email" autocomplete="email" placeholder="you@email.com" required>
+            <p class="err" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <div class="field__row"><label for="li-pass">Password</label><button type="button" class="link" data-forgot>Forgot password?</button></div>
+            <div class="pw">
+              <input id="li-pass" type="password" autocomplete="current-password" placeholder="Your password" required minlength="8">
+              <button type="button" class="pw__eye" aria-label="Show password" data-eye><svg><use href="#eye"/></svg></button>
+            </div>
+            <p class="err" aria-live="polite"></p>
+          </div>
+          <label class="check"><input type="checkbox" checked><span class="box"><svg><use href="#check"/></svg></span>Keep me logged in for 30 days</label>
+          <button class="btn btn--pine" type="submit"><span class="btn__t">Log in</span><span class="spin" aria-hidden="true"></span></button>
+        </form>
+        <p class="switch">New to Telo? <button type="button" class="link" data-go="signup">Create an account</button></p>
+      </section>
+
+      <!-- ===== FORGOT ===== -->
+      <section class="view" id="view-forgot" hidden>
+        <button type="button" class="back" data-go="login"><svg><use href="#back"/></svg>Back to log in</button>
+        <h1 class="title">Reset your <em>password</em></h1>
+        <p class="sub">Enter your email and we’ll send a secure link. It expires in 30 minutes.</p>
+        <form class="form" id="form-forgot" novalidate>
+          <div class="field">
+            <label for="fg-email">Email</label>
+            <input id="fg-email" type="email" autocomplete="email" placeholder="you@email.com" required>
+            <p class="err" aria-live="polite"></p>
+          </div>
+          <button class="btn btn--pine" type="submit"><span class="btn__t">Send reset link</span><span class="spin" aria-hidden="true"></span></button>
+        </form>
+        <div class="sent" hidden>
+          <div class="sent__ic"><svg><use href="#check"/></svg></div>
+          <p><b>Check your inbox.</b> If an account exists for <span class="sent__mail"></span>, a reset link is on its way.</p>
+        </div>
+      </section>
+
+      <!-- ===== SIGNUP ===== -->
+      <section class="view" id="view-signup" role="tabpanel" aria-labelledby="tab-signup" hidden>
+        <div class="steps" aria-hidden="true">
+          <span class="steps__lbl mono">Step <b class="steps__n">1</b> of 3</span>
+          <div class="steps__bar"><i></i></div>
+        </div>
+
+        <!-- step 1 -->
+        <div class="step" data-step="1">
+          <h1 class="title">Get your <em>Telo age</em></h1>
+          <p class="sub">Create your account. It takes about two minutes.</p>
+          <div class="social social--row">
+            <button type="button" class="sbtn" data-social="Apple"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.37 12.6c.02 2.4 2.1 3.2 2.13 3.21-.02.06-.33 1.14-1.1 2.26-.66.97-1.35 1.94-2.43 1.96-1.06.02-1.4-.63-2.62-.63-1.21 0-1.6.61-2.6.65-1.05.04-1.85-1.05-2.52-2.02-1.37-1.98-2.42-5.6-1.01-8.04.7-1.21 1.95-1.98 3.3-2 1.03-.02 2 .7 2.63.7.63 0 1.81-.86 3.05-.73.52.02 1.98.21 2.92 1.59-.08.05-1.74 1.02-1.75 3.05zM14.37 5.3c.56-.68.93-1.62.83-2.56-.8.03-1.77.53-2.35 1.21-.52.6-.97 1.56-.85 2.48.9.07 1.81-.45 2.37-1.13z"/></svg>Apple</button>
+            <button type="button" class="sbtn" data-social="Google"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M21.6 12.2c0-.7-.1-1.4-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/><path fill="#34A853" d="M12 22c2.7 0 5-.9 6.6-2.5l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path fill="#FBBC05" d="M6.4 13.9a6 6 0 0 1 0-3.8V7.5H3.1a10 10 0 0 0 0 9l3.3-2.6z"/><path fill="#EA4335" d="M12 6c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.5l3.3 2.6C7.2 7.8 9.4 6 12 6z"/></svg>Google</button>
+          </div>
+          <div class="or"><span>or with email</span></div>
+          <form class="form" id="form-s1" novalidate>
+            <div class="grid2">
+              <div class="field"><label for="su-first">First name</label><input id="su-first" autocomplete="given-name" placeholder="Maya" required><p class="err" aria-live="polite"></p></div>
+              <div class="field"><label for="su-last">Last name</label><input id="su-last" autocomplete="family-name" placeholder="Lindqvist" required><p class="err" aria-live="polite"></p></div>
+            </div>
+            <div class="field"><label for="su-email">Email</label><input id="su-email" type="email" autocomplete="email" placeholder="you@email.com" required><p class="err" aria-live="polite"></p></div>
+            <div class="field">
+              <label for="su-pass">Password</label>
+              <div class="pw">
+                <input id="su-pass" type="password" autocomplete="new-password" placeholder="At least 8 characters" required minlength="8" aria-describedby="pw-rules">
+                <button type="button" class="pw__eye" aria-label="Show password" data-eye><svg><use href="#eye"/></svg></button>
+              </div>
+              <div class="meter" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+              <ul class="rules mono" id="pw-rules">
+                <li data-rule="len">8+ characters</li><li data-rule="num">A number</li><li data-rule="case">Upper &amp; lower case</li>
+              </ul>
+              <p class="err" aria-live="polite"></p>
+            </div>
+            <label class="check"><input type="checkbox" id="su-terms" required><span class="box"><svg><use href="#check"/></svg></span><span>I agree to the <a href="mailto:legal@telo.health" class="link">Terms</a> and <a href="mailto:privacy@telo.health" class="link">Privacy Policy</a>, and consent to my health data being processed to deliver care.</span></label>
+            <p class="err err--terms" aria-live="polite"></p>
+            <button class="btn btn--pine" type="submit"><span class="btn__t">Continue</span><span class="spin" aria-hidden="true"></span></button>
+          </form>
+          <p class="switch">Already a member? <button type="button" class="link" data-go="login">Log in</button></p>
+        </div>
+
+        <!-- step 2 -->
+        <div class="step" data-step="2" hidden>
+          <button type="button" class="back" data-prev><svg><use href="#back"/></svg>Back</button>
+          <h1 class="title">What brings you to <em>Telo</em>?</h1>
+          <p class="sub">Pick all that apply. Your clinician will shape your first plan around them.</p>
+          <form class="form" id="form-s2" novalidate>
+            <fieldset class="chips">
+              <legend class="sr">Goals</legend>
+              <label><input type="checkbox" name="goal" value="longevity"><span>Live longer, better</span></label>
+              <label><input type="checkbox" name="goal" value="energy"><span>More energy</span></label>
+              <label><input type="checkbox" name="goal" value="heart"><span>Heart health</span></label>
+              <label><input type="checkbox" name="goal" value="hormones"><span>Hormones</span></label>
+              <label><input type="checkbox" name="goal" value="metabolic"><span>Weight &amp; metabolism</span></label>
+              <label><input type="checkbox" name="goal" value="sleep"><span>Sleep &amp; stress</span></label>
+              <label><input type="checkbox" name="goal" value="family"><span>Family history</span></label>
+              <label><input type="checkbox" name="goal" value="peace"><span>Peace of mind</span></label>
+            </fieldset>
+            <p class="err err--chips" aria-live="polite"></p>
+            <div class="grid2">
+              <div class="field"><label for="su-dob">Date of birth</label><input id="su-dob" type="date" required max="2008-12-31" min="1930-01-01"><p class="err" aria-live="polite"></p></div>
+              <div class="field"><label for="su-zip">ZIP / postcode</label><input id="su-zip" autocomplete="postal-code" placeholder="11211" required><p class="err" aria-live="polite"></p></div>
+            </div>
+            <button class="btn btn--pine" type="submit"><span class="btn__t">Continue</span><span class="spin" aria-hidden="true"></span></button>
+          </form>
+        </div>
+
+        <!-- step 3 -->
+        <div class="step" data-step="3" hidden>
+          <button type="button" class="back" data-prev><svg><use href="#back"/></svg>Back</button>
+          <h1 class="title">Choose your <em>membership</em></h1>
+          <p class="sub">Cancel anytime. HSA/FSA eligible.</p>
+          <form class="form" id="form-s3" novalidate>
+            <div class="plans" role="radiogroup" aria-label="Membership plan">
+              <label class="plan"><input type="radio" name="plan" value="essentials"><span class="plan__in">
+                <span class="plan__top"><b>Essentials</b><span class="plan__p">$49<small>/mo</small></span></span>
+                <span class="plan__d">112 biomarkers 2× a year, Telo age, app + async clinician review</span></span></label>
+              <label class="plan"><input type="radio" name="plan" value="complete" checked><span class="plan__in">
+                <span class="plan__top"><b>Complete <em class="tag mono">Most chosen</em></b><span class="plan__p">$129<small>/mo</small></span></span>
+                <span class="plan__d">Everything 4× a year, annual full-body MRI + DEXA, dedicated clinician + coach</span></span></label>
+            </div>
+            <div class="summary">
+              <div><span>First test</span><b>At-home kit, ships in 48h</b></div>
+              <div><span>Billed</span><b class="sum__bill">$1,548 / year</b></div>
+              <div><span>Due today</span><b class="sum__due">$0. Billing starts after your first draw.</b></div>
+            </div>
+            <button class="btn btn--lime" type="submit"><span class="btn__t">Start my membership</span><span class="spin" aria-hidden="true"></span></button>
+            <p class="fine mono">Concept demo: no payment is taken and no data leaves this page.</p>
+          </form>
+        </div>
+
+        <!-- done -->
+        <div class="step step--done" data-step="4" hidden>
+          <svg class="done__ring" viewBox="0 0 64 64" aria-hidden="true">
+            <circle cx="32" cy="32" r="24" class="done__trk"/>
+            <path class="done__arc" d="M55.29 26.19A24 24 0 1 1 37.81 8.71"/>
+            <circle class="done__dot" cx="48.97" cy="15.03" r="5.4"/>
+          </svg>
+          <h1 class="title">You’re in, <em class="done__name">Maya</em>.</h1>
+          <p class="sub">Your kit ships within 48 hours. We’ll text you to book your draw, and your Telo age lands about a week later.</p>
+          <ol class="next">
+            <li><span class="mono">01</span>Kit arrives at your door</li>
+            <li><span class="mono">02</span>Morning draw at home or a nearby lab</li>
+            <li><span class="mono">03</span>Results + first call with your clinician</li>
+          </ol>
+          <a href="index.html" class="btn btn--pine">Back to Telo</a>
+        </div>
+      </section>
+
+      <!-- signed-in state -->
+      <section class="view" id="view-done-login" hidden>
+        <svg class="done__ring" viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="24" class="done__trk"/>
+          <path class="done__arc" d="M55.29 26.19A24 24 0 1 1 37.81 8.71"/>
+          <circle class="done__dot" cx="48.97" cy="15.03" r="5.4"/>
+        </svg>
+        <h1 class="title">Welcome back.</h1>
+        <p class="sub">Your dashboard is in the Telo app. In this concept demo, we’ll take you back to the site.</p>
+        <a href="index.html" class="btn btn--pine">Continue</a>
+      </section>
+    </div>
+
+    <footer class="panel__foot mono">
+      <span>HIPAA · SOC 2 Type II · 256-bit encryption</span>
+      <span><a href="mailto:help@telo.health">Need help?</a></span>
+    </footer>
+  </main>
+</div>
+
+<div class="toast mono" role="status" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

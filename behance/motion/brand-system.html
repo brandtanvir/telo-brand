@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Telo | Brand system loops</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/tokens.css">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;overflow:hidden;background:#F5F3EA}
+  .stage{position:relative;width:1920px;height:1080px;overflow:hidden;font-family:var(--f-sans);background:var(--bone)}
+  .scene{position:absolute;inset:0}
+  .mono{font-family:var(--f-mono);font-size:18px;letter-spacing:.06em;text-transform:uppercase}
+  /* A: palette */
+  .pal{display:flex}
+  .pal div{flex:1;height:100%;display:flex;flex-direction:column;justify-content:space-between;padding:64px 44px}
+  .pal h3{margin:0;font-size:64px;font-weight:350;letter-spacing:-.04em}
+  .pal p{margin:0;font-family:var(--f-mono);font-size:18px;line-height:1.8;opacity:.75}
+  /* B: type */
+  .type{background:var(--pine);color:var(--bone)}
+  .aa{position:absolute;left:150px;top:90px;font-size:640px;line-height:1;letter-spacing:-.06em;font-weight:300}
+  .aa em{font-family:var(--f-serif);font-style:italic;font-weight:400;color:var(--lime);letter-spacing:-.02em}
+  .wgt{position:absolute;right:150px;top:150px;text-align:right}
+  .wgt .mono{color:var(--lime)}
+  .wgt b{display:block;font-size:150px;font-weight:300;letter-spacing:-.05em;line-height:1;margin-top:12px;font-variant-numeric:tabular-nums}
+  .fams{position:absolute;right:150px;bottom:130px;display:grid;gap:18px;text-align:right;font-size:34px;color:rgba(245,243,234,.85)}
+  .fams .s{font-family:var(--f-serif);font-style:italic;font-size:42px}
+  .fams .m{font-family:var(--f-mono);font-size:28px}
+  /* C: bars */
+  .bars{background:#E4EBDB}
+  .bars__in{position:absolute;left:220px;right:220px;top:50%;transform:translateY(-50%);display:grid;gap:64px}
+  .bars h2{margin:0 0 16px;font-size:96px;font-weight:300;letter-spacing:-.045em;color:var(--pine);line-height:1}
+  .bars h2 em{font-family:var(--f-serif);font-style:italic;color:#4E8A1C}
+  .row{display:grid;grid-template-columns:320px 1fr 220px;gap:40px;align-items:center}
+  .row b{font-size:38px;font-weight:400;letter-spacing:-.02em;color:var(--pine)}
+  .row span{display:block;font-size:20px;color:var(--t-2);margin-top:4px}
+  .bar{position:relative;height:16px;border-radius:16px;background:linear-gradient(90deg,var(--watch) 0 16%,var(--ok) 16% 34%,var(--opt) 34% 66%,var(--ok) 66% 84%,var(--watch) 84%)}
+  .bar.low{background:linear-gradient(90deg,var(--opt) 0 45%,var(--ok) 45% 70%,var(--watch) 70%)}
+  .bar.high{background:linear-gradient(90deg,var(--watch) 0 30%,var(--ok) 30% 55%,var(--opt) 55%)}
+  .pin{position:absolute;top:50%;left:0;width:36px;height:36px;margin:-18px 0 0 -18px;border-radius:50%;background:#fff;border:8px solid var(--pine);box-shadow:0 8px 20px rgba(14,58,45,.25)}
+  .val{text-align:right;font-size:44px;font-weight:350;letter-spacing:-.03em;color:var(--pine);font-variant-numeric:tabular-nums}
+  .val small{display:block;font-family:var(--f-mono);font-size:15px;letter-spacing:.06em;color:#4E8A1C}
+  .wm{position:absolute;right:72px;bottom:56px;width:120px}
+</style>
+</head>
+<body>
+<div class="stage">
+  <section class="scene pal" id="sA">
+    <div style="background:#0E3A2D;color:#F5F3EA"><h3>Pine</h3><p>#0E3A2D<br>Trust</p></div>
+    <div style="background:#C9F26B;color:#0E3A2D"><h3>Lime</h3><p>#C9F26B<br>Vitality</p></div>
+    <div style="background:#F5F3EA;color:#0E3A2D;box-shadow:inset 1px 0 0 rgba(14,58,45,.1)"><h3>Bone</h3><p>#F5F3EA<br>Calm</p></div>
+    <div style="background:#17503E;color:#F5F3EA"><h3>Forest</h3><p>#17503E<br>Depth</p></div>
+    <div style="background:#8FD63F;color:#0E3A2D"><h3>Leaf</h3><p>#8FD63F<br>Progress</p></div>
+  </section>
+  <section class="scene type" id="sB">
+    <div class="aa"><span class="aa__g">A</span><em>a</em></div>
+    <div class="wgt"><p class="mono">Geist · weight</p><b class="wnum">300</b></div>
+    <div class="fams"><span>Geist · headlines &amp; UI</span><span class="s">Instrument Serif · emotion</span><span class="m">GEIST MONO · DATA</span></div>
+  </section>
+  <section class="scene bars" id="sC">
+    <div class="bars__in">
+      <h2>Optimal, not <em>alarming.</em></h2>
+      <div class="row"><div><b>ApoB</b><span>Heart · lower is better</span></div><div class="bar low"><i class="pin" data-to="30"></i></div><p class="val"><span class="n" data-to="72">0</span><small>OPTIMAL</small></p></div>
+      <div class="row"><div><b>VO₂ max</b><span>Fitness · higher is better</span></div><div class="bar high"><i class="pin" data-to="84"></i></div><p class="val"><span class="n" data-to="46">0</span><small>OPTIMAL</small></p></div>
+      <div class="row"><div><b>HbA1c</b><span>Metabolic · in range</span></div><div class="bar"><i class="pin" data-to="50"></i></div><p class="val"><span class="n" data-to="5.3" data-d="1">0</span><small>OPTIMAL</small></p></div>
+    </div>
+    <svg class="wm" viewBox="-1 18 181 88" fill="none"><g stroke="#0E3A2D" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 24V86Q12 100 26 100H29"/><path d="M3 56H28"/><path d="M41 78H85A22 22 0 1 0 79.85 92.14"/><path d="M104 24V86Q104 100 118 100"/><path d="M172.35 72.68A22 22 0 1 1 156.32 56.65"/></g><circle cx="166.56" cy="62.44" r="4.6" fill="#8FD63F"/></svg>
+  </section>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+  const cols = gsap.utils.toArray('#sA > div');
+  gsap.set('#sB', { clipPath: 'inset(100% 0 0 0)' });
+  gsap.set('#sC', { clipPath: 'inset(100% 0 0 0)' });
+  const tl = gsap.timeline({ paused: true });
+  // A: palette sweep
+  tl.from(cols, { yPercent: 100, duration: 1.1, stagger: .12, ease: 'expo.out' }, 0)
+    .from('#sA h3, #sA p', { opacity: 0, y: 30, duration: .8, stagger: .05, ease: 'expo.out' }, .5)
+    .to(cols, { flexGrow: (i) => [3, 1.4, 1, .6, .6][i], duration: 1.2, ease: 'expo.inOut' }, 1.9)
+  // B: type
+    .to('#sB', { clipPath: 'inset(0% 0 0 0)', duration: 1, ease: 'expo.inOut' }, 3.3)
+    .from('.aa', { y: 120, opacity: 0, duration: 1.2, ease: 'expo.out' }, 3.7)
+    .from('.fams span', { opacity: 0, x: 40, duration: .8, stagger: .1, ease: 'expo.out' }, 3.9);
+  const w = { v: 300 };
+  tl.to(w, { v: 600, duration: 1.6, ease: 'power2.inOut', onUpdate: () => { document.querySelector('.aa__g').style.fontWeight = Math.round(w.v); document.querySelector('.wnum').textContent = Math.round(w.v); } }, 4.2)
+    .to(w, { v: 300, duration: 1.1, ease: 'power2.inOut', onUpdate: () => { document.querySelector('.aa__g').style.fontWeight = Math.round(w.v); document.querySelector('.wnum').textContent = Math.round(w.v); } }, 5.9)
+  // C: bars
+    .to('#sC', { clipPath: 'inset(0% 0 0 0)', duration: 1, ease: 'expo.inOut' }, 7.1)
+    .from('.bars h2, .row', { opacity: 0, y: 30, duration: .8, stagger: .1, ease: 'expo.out' }, 7.5);
+  document.querySelectorAll('.pin').forEach((p, i) => tl.fromTo(p, { left: '0%' }, { left: p.dataset.to + '%', duration: 1.6, ease: 'expo.out' }, 7.9 + i * .12));
+  document.querySelectorAll('.n').forEach((n, i) => { const o = { v: 0 }, d = +(n.dataset.d || 0); tl.to(o, { v: +n.dataset.to, duration: 1.6, ease: 'expo.out', onUpdate: () => n.textContent = o.v.toFixed(d) }, 7.9 + i * .12); });
+  tl.to({}, { duration: 1.3 });
+  window.__duration = tl.duration();
+  window.__seek = t => tl.time(t, false);
+  if (!/capture/.test(location.search)) tl.repeat(-1).play();
+</script>
+</body>
+</html>

@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Telo | Launch film</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/app.css">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;background:#000;overflow:hidden}
+  .stage{position:relative;width:1920px;height:1080px;overflow:hidden;background:#050806;font-family:var(--f-sans);color:var(--bone)}
+  .L{position:absolute;inset:0;opacity:0}
+  .c{position:absolute;left:0;right:0;text-align:center}
+  .kin{font-size:132px;line-height:1;font-weight:300;letter-spacing:-.05em}
+  .kin em,.serif{font-family:var(--f-serif);font-style:italic;font-weight:400;letter-spacing:-.02em}
+  .w{display:inline-block;will-change:transform,filter,opacity}
+  .mono{font-family:var(--f-mono);font-size:20px;letter-spacing:.08em;text-transform:uppercase}
+  .lime{color:var(--lime)} .green{color:#4E8A1C}
+  img{display:block}
+  /* overlays */
+  .grain{position:absolute;inset:-20%;z-index:50;pointer-events:none;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .vig{position:absolute;inset:0;z-index:49;pointer-events:none;background:radial-gradient(120% 90% at 50% 50%,transparent 60%,rgba(0,0,0,.35))}
+  .fade{position:absolute;inset:0;z-index:60;background:#000;opacity:1;pointer-events:none}
+
+  /* S1: once a year */
+  #s1{background:#050806}
+  .pdot{position:absolute;left:50%;top:50%;width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;background:var(--lime);box-shadow:0 0 40px 8px rgba(201,242,107,.35)}
+  #s1 .t{top:470px}
+  .win{position:absolute;left:50%;top:50%;width:560px;height:360px;margin:-180px 0 0 -280px;border-radius:26px;overflow:hidden;opacity:0}
+  .win img{width:100%;height:100%;object-fit:cover;filter:grayscale(.6) brightness(.75)}
+  .win__cap{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;font-size:64px;font-weight:350;letter-spacing:-.04em;color:#fff;text-shadow:0 4px 30px rgba(0,0,0,.5)}
+  /* S2 */
+  #s2{background:#030504}
+  #s2 .t{top:470px}
+  /* S3 */
+  #s3{background:#050806}
+  #s3 .bg{position:absolute;inset:-4%;width:108%;height:108%;object-fit:cover;opacity:0}
+  #s3 .shade{position:absolute;inset:0;background:radial-gradient(60% 55% at 50% 50%,rgba(8,37,25,.55),rgba(8,37,25,.15) 80%),linear-gradient(180deg,rgba(8,37,25,.45),rgba(8,37,25,.25) 50%,rgba(8,37,25,.7))}
+  #s3 .k1{top:330px;font-size:40px;font-weight:350;letter-spacing:-.01em;color:rgba(245,243,234,.8)}
+  #s3 .k2{top:400px}
+  #s3 .k3{top:560px}
+  /* S4 logo */
+  #s4{background:radial-gradient(50% 55% at 50% 48%,#17503E 0%,#0E3A2D 60%,#082519 100%)}
+  #s4 .glow{position:absolute;left:50%;top:46%;width:1200px;height:1200px;margin:-600px 0 0 -600px;border-radius:50%;background:radial-gradient(closest-side,rgba(201,242,107,.22),rgba(201,242,107,0))}
+  #mark{position:absolute;left:50%;top:50%;width:820px;overflow:visible}
+  #s4 .sub{top:770px;opacity:0}
+  /* S5 membership + biomarkers */
+  #s5{background:var(--bone);color:var(--pine)}
+  #s5 .glow{position:absolute;width:1400px;height:1100px;left:300px;top:-520px;border-radius:50%;background:radial-gradient(closest-side,rgba(201,242,107,.55),rgba(201,242,107,0))}
+  #s5 .head{top:340px}
+  #s5 .head .kin{color:var(--pine)}
+  .big112{position:absolute;left:150px;top:250px;font-size:420px;font-weight:300;letter-spacing:-.07em;line-height:.85;color:var(--pine);font-variant-numeric:tabular-nums}
+  .big112 small{display:block;font-size:56px;letter-spacing:-.03em;margin-top:22px;font-weight:350}
+  .bars{position:absolute;left:1000px;top:300px;width:760px;display:grid;gap:46px}
+  .row{display:grid;grid-template-columns:200px 1fr 120px;gap:28px;align-items:center}
+  .row b{font-size:30px;font-weight:450;letter-spacing:-.02em}
+  .row span{font-family:var(--f-mono);font-size:18px;color:#4E8A1C;text-align:right}
+  .bar{position:relative;height:14px;border-radius:14px;background:linear-gradient(90deg,var(--watch) 0 16%,var(--ok) 16% 34%,var(--opt) 34% 66%,var(--ok) 66% 84%,var(--watch) 84%)}
+  .bar.low{background:linear-gradient(90deg,var(--opt) 0 45%,var(--ok) 45% 70%,var(--watch) 70%)}
+  .bar.high{background:linear-gradient(90deg,var(--watch) 0 30%,var(--ok) 30% 55%,var(--opt) 55%)}
+  .pin{position:absolute;top:50%;left:0;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;background:#fff;border:8px solid var(--pine)}
+  /* S5c scan */
+  #s5c{background:#0B1F18}
+  #s5c img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+  #s5c .tint{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,37,25,.75),rgba(8,37,25,.15) 55%,rgba(8,37,25,.3))}
+  .scanline{position:absolute;left:0;right:0;height:3px;background:var(--lime);box-shadow:0 0 30px 8px rgba(201,242,107,.5);top:0}
+  .scanfill{position:absolute;left:0;right:0;top:0;height:0;background:linear-gradient(180deg,rgba(201,242,107,0),rgba(201,242,107,.14));}
+  .tagd{position:absolute;display:flex;align-items:center;gap:12px;padding:14px 20px;border-radius:18px;background:rgba(245,243,234,.14);border:1px solid rgba(245,243,234,.3);backdrop-filter:blur(14px);font-size:24px;color:#fff;opacity:0}
+  .tagd i{width:12px;height:12px;border-radius:50%;background:var(--lime)}
+  .tagd b{font-weight:500}
+  #s5c .cap{position:absolute;left:150px;top:420px;font-size:120px;line-height:.95;font-weight:300;letter-spacing:-.05em;color:#fff}
+  #s5c .cap .mono{display:block;font-size:22px;color:var(--lime);margin-bottom:26px;letter-spacing:.08em}
+  /* S5d phone */
+  #s5d{background:radial-gradient(45% 60% at 66% 50%,rgba(201,242,107,.55),rgba(201,242,107,0) 70%),#E4EBDB;color:var(--pine)}
+  .phone{position:absolute;width:414px;height:868px;padding:12px;border-radius:66px;background:#0B1F18;box-shadow:0 0 0 2px #2A3D35 inset,0 70px 110px -40px rgba(8,37,25,.55)}
+  .phone__in{position:relative;width:390px;height:844px;border-radius:54px;overflow:hidden;background:var(--bone)}
+  .island{position:absolute;z-index:20;top:11px;left:50%;width:122px;height:35px;margin-left:-61px;border-radius:20px;background:#0B1F18}
+  #s5d .phone{left:1150px;top:106px}
+  #s5d .txt{position:absolute;left:150px;top:330px}
+  #s5d .txt .mono{color:#4E8A1C;margin-bottom:24px;display:block}
+  .agebig{font-size:300px;font-weight:300;letter-spacing:-.07em;line-height:.85;font-variant-numeric:tabular-nums}
+  .agebig small{font-size:60px;letter-spacing:-.02em;margin-left:14px}
+  .agesub{font-size:44px;letter-spacing:-.03em;font-weight:350;margin-top:30px}
+  /* S6 idea */
+  #s6{background:radial-gradient(60% 60% at 50% 45%,#17503E,#0E3A2D 60%,#082519)}
+  #idea{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:visible}
+  #s6 .cap6{position:absolute;left:0;right:0;top:850px;text-align:center;font-size:58px;font-weight:300;letter-spacing:-.035em;height:80px}
+  #s6 .cap6 span{position:absolute;left:0;right:0;opacity:0}
+  #s6 .cap6 em{font-family:var(--f-serif);font-style:italic;color:var(--lime)}
+  #s6 .pct{position:absolute;left:0;right:0;top:404px;margin:0;line-height:1.2;text-align:center;font-size:110px;font-weight:300;letter-spacing:-.05em;opacity:0;font-variant-numeric:tabular-nums}
+  .lbl{font-family:var(--f-mono);font-size:20px;letter-spacing:.08em;fill:rgba(245,243,234,.6)}
+  /* S7 product */
+  #s7{background:radial-gradient(50% 60% at 50% 50%,rgba(201,242,107,.45),rgba(201,242,107,0) 70%),#E4EBDB;color:var(--pine)}
+  .browser{position:absolute;border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 60px 100px -50px rgba(8,37,25,.5)}
+  .browser__bar{height:44px;display:flex;align-items:center;gap:9px;padding:0 18px;background:#F3F2EC;border-bottom:1px solid rgba(14,58,45,.08)}
+  .browser__bar i{width:12px;height:12px;border-radius:50%;background:#D9D7CC}
+  .browser__url{margin:0 auto;height:26px;padding:0 70px;border-radius:8px;background:#fff;display:flex;align-items:center;font-size:14px;color:var(--t-2)}
+  .browser img{width:100%}
+  #s7 .browser{left:120px;top:120px;width:1100px}
+  #s7 .phone{left:1310px;top:106px}
+  .ph2,.ph3{opacity:0}
+  #s7 .cap7{position:absolute;left:120px;top:905px;font-size:64px;font-weight:300;letter-spacing:-.04em;height:90px;width:1100px}
+  #s7 .cap7 span{position:absolute;left:0;top:0;opacity:0;white-space:nowrap}
+  #s7 .cap7 em{font-family:var(--f-serif);font-style:italic;color:#4E8A1C}
+  /* S8 end card */
+  #s8{background:radial-gradient(50% 55% at 50% 45%,#17503E 0%,#0E3A2D 60%,#082519 100%)}
+  #s8 .glow{position:absolute;left:50%;top:44%;width:1300px;height:1300px;margin:-650px 0 0 -650px;border-radius:50%;background:radial-gradient(closest-side,rgba(201,242,107,.26),rgba(201,242,107,0))}
+  #mark2{position:absolute;left:50%;top:40%;width:640px;transform:translate(-50%,-50%);overflow:visible}
+  #s8 .tag8{top:640px;font-size:72px;font-weight:300;letter-spacing:-.04em}
+  #s8 .foot{position:absolute;left:0;right:0;bottom:70px;display:flex;justify-content:center;gap:40px;color:rgba(245,243,234,.55);opacity:0}
+  #s8 .foot b{color:var(--lime);font-weight:400}
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <!-- S1 -->
+  <section class="L" id="s1">
+    <div class="pdot"></div>
+    <p class="c kin t" id="t1"><span class="w">Once</span> <span class="w">a</span> <span class="w">year.</span></p>
+    <div class="win" id="win1"><img src="../assets/photos/clinician.jpg" alt=""><p class="win__cap">“You’re <em class="serif">fine.</em>”</p></div>
+  </section>
+
+  <!-- S2 -->
+  <section class="L" id="s2">
+    <p class="c kin t" id="t2"><span class="w">Until</span> <span class="w">you’re</span> <span class="w serif">not.</span></p>
+  </section>
+
+  <!-- S3 -->
+  <section class="L" id="s3">
+    <img class="bg" src="../assets/photos/cover-sunrise.jpg" alt="">
+    <div class="shade"></div>
+    <p class="c k1" id="t3a">What if you could</p>
+    <p class="c kin k2" id="t3b"><span class="w">see</span> <span class="w">it</span> <span class="w">coming,</span></p>
+    <p class="c kin k3" id="t3c"><span class="w serif lime">years</span> <span class="w serif lime">earlier?</span></p>
+  </section>
+
+  <!-- S4 logo -->
+  <section class="L" id="s4">
+    <div class="glow"></div>
+    <svg id="mark" viewBox="-1 18 181 88" fill="none">
+      <g stroke="#F5F3EA" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round">
+        <path class="ln" pathLength="1" d="M12 24V86Q12 100 26 100H29"/>
+        <path class="ln" pathLength="1" d="M3 56H28"/>
+        <path class="ln" pathLength="1" d="M41 78H85A22 22 0 1 0 79.85 92.14"/>
+        <path class="ln" pathLength="1" d="M104 24V86Q104 100 118 100"/>
+        <g id="o"><path class="ring" pathLength="1" d="M172.35 72.68A22 22 0 1 1 156.32 56.65"/>
+          <circle class="dot" cx="166.56" cy="62.44" r="4.6" fill="#C9F26B" stroke="none"/></g>
+      </g>
+    </svg>
+    <p class="c sub" id="sub4" style="font-size:54px;font-weight:300;letter-spacing:-.03em">A preventive longevity <em class="serif lime">membership.</em></p>
+  </section>
+
+  <!-- S5 membership + biomarkers -->
+  <section class="L" id="s5">
+    <div class="glow"></div>
+    <div class="c head" id="h5"><p class="kin"><span class="w">A</span> <span class="w">preventive</span> <span class="w">longevity</span><br><span class="w serif green">membership.</span></p></div>
+    <div class="big112" id="b112"><span id="n112">0</span><small>biomarkers, every quarter</small></div>
+    <div class="bars" id="bars">
+      <div class="row"><b>ApoB</b><div class="bar low"><i class="pin" data-to="30"></i></div><span>Optimal</span></div>
+      <div class="row"><b>HbA1c</b><div class="bar"><i class="pin" data-to="50"></i></div><span>Optimal</span></div>
+      <div class="row"><b>hs-CRP</b><div class="bar low"><i class="pin" data-to="38"></i></div><span>Optimal</span></div>
+      <div class="row"><b>VO₂ max</b><div class="bar high"><i class="pin" data-to="84"></i></div><span>Optimal</span></div>
+      <div class="row"><b>Vitamin D</b><div class="bar high"><i class="pin" data-to="62"></i></div><span>Optimal</span></div>
+    </div>
+  </section>
+
+  <!-- S5c scan -->
+  <section class="L" id="s5c">
+    <img src="../assets/photos/maya.jpg" alt="">
+    <div class="tint"></div>
+    <div class="scanfill" id="sfill"></div>
+    <div class="scanline" id="sline"></div>
+    <p class="cap"><span class="mono">60-minute MRI · DEXA · VO₂ max</span>Your whole<br><span class="serif lime">body,</span> scanned.</p>
+    <div class="tagd" style="left:1130px;top:250px"><i></i><b>Heart</b>&nbsp;clear</div>
+    <div class="tagd" style="left:1400px;top:470px"><i></i><b>Visceral fat</b>&nbsp;0.6 lb</div>
+    <div class="tagd" style="left:1160px;top:700px"><i></i><b>Lean mass</b>&nbsp;top 15%</div>
+  </section>
+
+  <!-- S5d Telo age -->
+  <section class="L" id="s5d">
+    <div class="txt"><span class="mono">All of it, in one number</span><div class="agebig"><span id="ageN">41.0</span><small>yrs</small></div><p class="agesub">Your <em class="serif green">Telo age.</em></p></div>
+    <div class="phone" id="ph1"><div class="phone__in"><span class="island"></span><div data-screen="home"></div></div></div>
+  </section>
+
+  <!-- S6 idea -->
+  <section class="L" id="s6">
+    <svg id="idea" viewBox="0 0 1920 1080" fill="none">
+      <g id="chrom" stroke-linecap="round">
+        <path d="M560 500 C700 420 800 600 960 520 S1240 420 1360 500" stroke="rgba(245,243,234,.55)" stroke-width="5" pathLength="1" class="dna"/>
+        <path d="M560 580 C700 660 800 480 960 560 S1240 660 1360 580" stroke="rgba(245,243,234,.55)" stroke-width="5" pathLength="1" class="dna"/>
+        <g stroke="rgba(245,243,234,.25)" stroke-width="4" class="rungs"><path d="M640 482v116M720 500v80M800 525v30M880 520v40M960 520v40M1040 506v68M1120 488v104M1200 476v128M1280 486v108"/></g>
+        <circle id="capL" cx="520" cy="540" r="52" stroke="#C9F26B" stroke-width="20"/>
+        <circle id="capR" cx="1400" cy="540" r="52" stroke="#C9F26B" stroke-width="20"/>
+        <text class="lbl" x="520" y="660" text-anchor="middle" id="lbl1">TELOMERE</text>
+        <text class="lbl" x="1400" y="660" text-anchor="middle" id="lbl2">TELOMERE</text>
+        <text class="lbl" x="960" y="400" text-anchor="middle" id="lbl3">YOUR DNA</text>
+      </g>
+      <g id="bigring" transform="translate(960 470)">
+        <circle id="rTrack" r="190" stroke="rgba(245,243,234,.1)" stroke-width="40"/>
+        <circle id="rRing" r="190" stroke="#F5F3EA" stroke-width="40" stroke-linecap="round" transform="rotate(-14)"/>
+        <circle id="rProg" r="190" stroke="#C9F26B" stroke-width="40" stroke-linecap="round" transform="rotate(-14)"/>
+        <circle id="rDot" cx="134.35" cy="-134.35" r="24" fill="#C9F26B"/>
+      </g>
+    </svg>
+    <p class="pct" id="pct">62%</p>
+    <div class="cap6">
+      <span id="c61">Telo, from <em>telomeres.</em></span>
+      <span id="c62">The caps that <em>protect</em> your DNA.</span>
+      <span id="c63">An open ring, sealed by a <em>dot,</em></span>
+      <span id="c64">that closes as your <em>health improves.</em></span>
+    </div>
+  </section>
+
+  <!-- S7 product -->
+  <section class="L" id="s7">
+    <div class="browser" id="br"><div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">telo.health</span></div><img src="../assets/shots/desk-hero.jpg" alt=""></div>
+    <div class="phone ph1" id="ph7a"><div class="phone__in"><span class="island"></span><div data-screen="care"></div></div></div>
+    <div class="phone ph2" id="ph7b"><div class="phone__in"><span class="island"></span><div data-screen="home"></div></div></div>
+    <div class="phone ph3" id="ph7c"><div class="phone__in"><span class="island"></span><div data-screen="results"></div></div></div>
+    <div class="cap7"><span id="c71">A clinician builds <em>your plan.</em></span><span id="c72">Three small actions <em>a day.</em></span><span id="c73">Retest every <em>quarter.</em></span></div>
+  </section>
+
+  <!-- S8 end -->
+  <section class="L" id="s8">
+    <div class="glow"></div>
+    <svg id="mark2" viewBox="-1 18 181 88" fill="none">
+      <g stroke="#F5F3EA" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round">
+        <path class="ln2" pathLength="1" d="M12 24V86Q12 100 26 100H29"/><path class="ln2" pathLength="1" d="M3 56H28"/>
+        <path class="ln2" pathLength="1" d="M41 78H85A22 22 0 1 0 79.85 92.14"/><path class="ln2" pathLength="1" d="M104 24V86Q104 100 118 100"/>
+        <path class="ln2" pathLength="1" d="M172.35 72.68A22 22 0 1 1 156.32 56.65"/>
+      </g>
+      <circle class="dot2" cx="166.56" cy="62.44" r="4.6" fill="#C9F26B"/>
+    </svg>
+    <p class="c tag8"><span class="w" id="ay">Add years.</span> <span class="w serif lime" id="al">Add life to them.</span></p>
+    <div class="foot mono" id="foot"><span>telo.health</span><span><b>●</b> Get your Telo age</span><span>A DesignMonks concept</span></div>
+  </section>
+
+  <div class="vig"></div>
+  <div class="grain"></div>
+  <div class="fade" id="fade"></div>
+</div>
+
+<script src="../js/screens.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+document.querySelectorAll('[data-screen] img').forEach(i => { const s = i.getAttribute('src'); if (!/^(https?:|data:|\.\.)/.test(s)) i.src = '../' + s; });
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const O = 1.0; // VO starts 1s into the film; word times below are VO times
+const T = v => v + O;
+const tl = gsap.timeline({ paused: true, defaults: { ease: 'expo.out' } });
+const show = (sel, at, d = .5) => tl.to(sel, { opacity: 1, duration: d, ease: 'power2.out' }, at);
+const hide = (sel, at, d = .4) => tl.to(sel, { opacity: 0, duration: d, ease: 'power2.in' }, at);
+// blur-in words (the reference's kinetic type)
+const words = (sel, at, stagger = .12, d = .7) => tl.fromTo(`${sel} .w`, { opacity: 0, y: 26, filter: 'blur(14px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: d, stagger }, at);
+
+// global open
+tl.to('#fade', { opacity: 0, duration: .6, ease: 'power1.out' }, 0);
+
+// ---------- S1: once a year (VO 0.24–3.6) ----------
+show('#s1', 0, .01);
+tl.fromTo('.pdot', { scale: 0 }, { scale: 1, duration: .5, ease: 'back.out(3)' }, .3)
+  .to('.pdot', { scale: 1.35, duration: .18, yoyo: true, repeat: 1, ease: 'power2.out' }, .55)
+  .to('.pdot', { y: -110, opacity: 0, scale: .6, duration: .6, ease: 'power3.in' }, T(1.0));
+words('#t1', T(1.1), .16);
+tl.to('#t1', { opacity: 0, y: -20, filter: 'blur(10px)', duration: .45, ease: 'power2.in' }, T(2.3));
+tl.fromTo('#win1', { opacity: 0, scale: .82, filter: 'blur(10px)' }, { opacity: 1, scale: 1, filter: 'blur(0px)', duration: .8 }, T(2.35));
+tl.fromTo('#win1 img', { scale: 1.2 }, { scale: 1, duration: 2.2, ease: 'power2.out' }, T(2.35));
+tl.to('#win1', { opacity: 0, scale: .94, filter: 'blur(8px)', duration: .45, ease: 'power2.in' }, T(3.75));
+hide('#s1', T(4.2), .01);
+
+// ---------- S2: until you're not (VO 4.48–5.24) ----------
+show('#s2', T(4.2), .01);
+words('#t2', T(4.42), .14, .6);
+tl.to('#t2', { scale: .96, duration: 1.2, ease: 'none' }, T(4.6));
+tl.to('#t2', { opacity: 0, filter: 'blur(16px)', duration: .7, ease: 'power2.in' }, T(5.6));
+
+// ---------- S3: see it coming (VO 6.16–8.44) ----------
+show('#s3', T(5.9), .01);
+tl.to('#s3 .bg', { opacity: 1, duration: 2.6, ease: 'power1.inOut' }, T(6.0));
+tl.fromTo('#s3 .bg', { scale: 1.12 }, { scale: 1, duration: 4.4, ease: 'power1.out' }, T(6.0));
+tl.fromTo('#t3a', { opacity: 0, y: 14, filter: 'blur(8px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: .7 }, T(6.12));
+words('#t3b', T(6.6), .13);
+words('#t3c', T(7.62), .18, .9);
+tl.to('#s3 .c', { opacity: 0, y: -24, filter: 'blur(12px)', duration: .5, stagger: .04, ease: 'power2.in' }, T(8.55));
+tl.to('#s3', { opacity: 0, duration: .35 }, T(9.0));
+
+// ---------- S4: logo reveal (Meet Telo 9.2–10.04) ----------
+gsap.set('.ln,.ring', { strokeDasharray: 1, strokeDashoffset: 1, opacity: 0 });
+gsap.set('.dot', { scale: 0, transformOrigin: '50% 50%' });
+gsap.set('#o', { svgOrigin: '151 78', scale: 2.1, x: -61.5, y: -16 });
+gsap.set('#mark', { xPercent: -50, yPercent: -55 });
+show('#s4', T(8.95), .3);
+tl.set('.ring', { opacity: 1 }, T(9.05))
+  .to('.ring', { strokeDashoffset: 0, autoRound: false, duration: .8, ease: 'power3.inOut' }, T(9.05))
+  .to('.dot', { scale: 1, duration: .45, ease: 'back.out(4)' }, T(9.78))
+  .to('#o', { scale: 1, x: 0, y: 0, duration: .9, ease: 'expo.inOut' }, T(10.05))
+  .set('.ln', { opacity: 1, stagger: .09 }, T(10.25))
+  .to('.ln', { strokeDashoffset: 0, autoRound: false, duration: .65, stagger: .09, ease: 'power2.inOut' }, T(10.25));
+tl.fromTo('#sub4', { opacity: 0, y: 16, filter: 'blur(10px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: .7 }, T(10.35));
+tl.to('#mark', { y: -50, scale: .9, duration: 1.2, ease: 'power2.inOut' }, T(10.3));
+tl.to('#s4', { opacity: 0, duration: .35, ease: 'power2.in' }, T(11.85));
+
+// ---------- S5: membership + 112 biomarkers (VO 10.32–14.24) ----------
+show('#s5', T(11.85), .3);
+gsap.set('#h5', { display: 'none' });
+tl.fromTo('#b112', { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: .7 }, T(11.95));
+const n112 = { v: 0 };
+tl.to(n112, { v: 112, duration: 1.4, ease: 'power3.out', onUpdate: () => $('#n112').textContent = Math.round(n112.v) }, T(12.0));
+tl.fromTo('#bars .row', { opacity: 0, x: 80 }, { opacity: 1, x: 0, duration: .6, stagger: .08 }, T(12.25));
+$$('.pin').forEach((p, i) => tl.fromTo(p, { left: '0%' }, { left: p.dataset.to + '%', duration: 1.2, ease: 'expo.out' }, T(12.5) + i * .08));
+tl.to('#s5', { opacity: 0, duration: .3 }, T(14.3));
+
+// ---------- S5c: scans your whole body (VO 14.48–15.64) ----------
+show('#s5c', T(14.25), .25);
+tl.fromTo('#s5c img', { scale: 1.12 }, { scale: 1.02, duration: 2, ease: 'power1.out' }, T(14.25));
+tl.fromTo('#sline', { top: 0 }, { top: 1080, duration: 1.5, ease: 'power1.inOut' }, T(14.4));
+tl.fromTo('#sfill', { height: 0 }, { height: 1080, duration: 1.5, ease: 'power1.inOut' }, T(14.4));
+tl.to('#sline', { opacity: 0, duration: .2 }, T(15.9));
+tl.fromTo('#s5c .cap', { opacity: 0, y: 30, filter: 'blur(10px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: .7 }, T(14.45));
+$$('.tagd').forEach((t, i) => tl.fromTo(t, { opacity: 0, scale: .8 }, { opacity: 1, scale: 1, duration: .5, ease: 'back.out(2)' }, T(14.75) + i * .3));
+tl.to('#s5c', { opacity: 0, duration: .3 }, T(15.85));
+
+// ---------- S5d: one number, your Telo age (VO 15.84–18.92) ----------
+show('#s5d', T(15.8), .3);
+tl.fromTo('#ph1', { y: 140, opacity: 0, rotate: 4 }, { y: 0, opacity: 1, rotate: 0, duration: 1 }, T(15.85));
+tl.fromTo('#s5d .txt', { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: .7 }, T(16.0));
+const ag = { v: 41 };
+tl.to(ag, { v: 34.8, duration: 1.8, ease: 'power3.inOut', onUpdate: () => $('#ageN').textContent = ag.v.toFixed(1) }, T(16.6));
+const homeRing = $('#ph1 .a-ring .v');
+if (homeRing) tl.fromTo(homeRing, { strokeDashoffset: homeRing.getAttribute('stroke-dasharray') }, { strokeDashoffset: homeRing.getAttribute('stroke-dashoffset'), duration: 1.6, ease: 'power3.out' }, T(16.4));
+tl.fromTo('#s5d .agesub', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .6 }, T(17.8));
+tl.to('#s5d', { opacity: 0, duration: .35 }, T(19.05));
+
+// ---------- S6: the idea (VO 19.36–28.24) ----------
+show('#s6', T(19.0), .35);
+gsap.set('.dna', { strokeDasharray: 1, strokeDashoffset: 1 });
+gsap.set('#capL,#capR', { scale: 0, transformOrigin: '50% 50%' });
+gsap.set('.rungs,.lbl', { opacity: 0 });
+gsap.set('#bigring', { opacity: 0 });
+const C = 2 * Math.PI * 190, ARC = C * (298 / 360);
+gsap.set('#rRing', { strokeDasharray: `${C} ${C}` });
+gsap.set('#rProg', { strokeDasharray: `0 ${C}`, opacity: 0 });
+gsap.set('#rDot', { scale: 0, transformOrigin: '50% 50%' });
+tl.to('.dna', { strokeDashoffset: 0, autoRound: false, duration: 1.1, stagger: .1, ease: 'power2.inOut' }, T(19.2))
+  .to('.rungs', { opacity: 1, duration: .6 }, T(19.7))
+  .to('#capL,#capR', { scale: 1, duration: .6, ease: 'back.out(2.5)', stagger: .12 }, T(20.3))
+  .to('#lbl1,#lbl2,#lbl3', { opacity: 1, duration: .5, stagger: .08 }, T(20.5))
+  .fromTo('#c61', { opacity: 0, y: 20, filter: 'blur(10px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: .6 }, T(19.4))
+  .to('#c61', { opacity: 0, duration: .3 }, T(21.0))
+  .fromTo('#c62', { opacity: 0, y: 20, filter: 'blur(10px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: .6 }, T(21.1))
+  .to('#capR', { scale: 1.35, duration: .5, ease: 'power2.out' }, T(21.3))
+  .to('#capR', { scale: 1, duration: .4, ease: 'power2.inOut' }, T(21.8))
+  .to('#c62', { opacity: 0, duration: .3 }, T(22.9))
+  // morph: strand away, cap becomes the big ring
+  .to('.dna,.rungs,#capL,.lbl', { opacity: 0, duration: .45, ease: 'power2.in' }, T(22.95))
+  .to('#capR', { attr: { cx: 960, cy: 470, r: 190 }, strokeWidth: 40, duration: .9, ease: 'expo.inOut' }, T(23.0))
+  .set('#bigring', { opacity: 1 }, T(23.85))
+  .set('#capR', { opacity: 0 }, T(23.85))
+  .to('#rRing', { strokeDasharray: `${ARC} ${C}`, duration: .9, ease: 'power3.inOut' }, T(23.95))
+  .fromTo('#c63', { opacity: 0, y: 20, filter: 'blur(10px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: .6 }, T(23.1))
+  .to('#rDot', { scale: 1, duration: .5, ease: 'back.out(4)' }, T(25.4))
+  .to('#c63', { opacity: 0, duration: .3 }, T(25.95))
+  .fromTo('#c64', { opacity: 0, y: 20, filter: 'blur(10px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: .6 }, T(26.05))
+  .to('#rRing', { stroke: 'rgba(245,243,234,.14)', duration: .5 }, T(26.1))
+  .set('#rProg', { opacity: 1 }, T(26.2))
+  .to('#rProg', { strokeDasharray: `${ARC} ${C}`, duration: 2.0, ease: 'power2.inOut' }, T(26.2))
+  .to('#pct', { opacity: 1, duration: .4 }, T(26.3));
+const pc = { v: 62 };
+tl.fromTo(pc, { v: 62 }, { v: 100, duration: 2.0, ease: 'power2.inOut', onUpdate: () => $('#pct').textContent = Math.round(pc.v) + '%' }, T(26.2));
+tl.to('#rDot', { scale: 1.4, duration: .2, yoyo: true, repeat: 1, ease: 'power2.out' }, T(28.2));
+tl.to('#s6', { opacity: 0, duration: .35 }, T(28.55));
+
+// ---------- S7: product (VO 28.72–33.44) ----------
+show('#s7', T(28.5), .3);
+tl.fromTo('#br', { opacity: 0, x: -80, scale: .96 }, { opacity: 1, x: 0, scale: 1, duration: .9 }, T(28.5));
+tl.fromTo('#br img', { y: 0 }, { y: -140, duration: 5.5, ease: 'power1.inOut' }, T(28.6));
+tl.fromTo('#ph7a', { opacity: 0, y: 160 }, { opacity: 1, y: 0, duration: .9 }, T(28.65));
+tl.from('#ph7a .a-msg, #ph7a .a-file', { opacity: 0, y: 16, duration: .5, stagger: .14 }, T(29.0));
+tl.fromTo('#c71', { opacity: 0, y: 20, filter: 'blur(10px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: .6 }, T(28.75));
+tl.to('#c71', { opacity: 0, duration: .25 }, T(30.3));
+tl.to('#ph7a', { opacity: 0, x: -40, duration: .35, ease: 'power2.in' }, T(30.3))
+  .fromTo('#ph7b', { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: .6 }, T(30.4))
+  .fromTo('#c72', { opacity: 0, y: 20, filter: 'blur(10px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: .6 }, T(30.45));
+// tick the three tasks
+const tasks = $$('#ph7b .a-tasks li');
+tasks.forEach((li, i) => { li.classList.remove('done'); tl.call(() => li.classList.add('done'), null, T(30.7) + i * .4); });
+tl.to('#c72', { opacity: 0, duration: .25 }, T(32.05));
+tl.to('#ph7b', { opacity: 0, x: -40, duration: .35, ease: 'power2.in' }, T(32.1))
+  .fromTo('#ph7c', { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: .6 }, T(32.2))
+  .fromTo('#c73', { opacity: 0, y: 20, filter: 'blur(10px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: .6 }, T(32.25));
+const resRing = $('#ph7c .a-ring .v');
+if (resRing) tl.fromTo(resRing, { strokeDashoffset: resRing.getAttribute('stroke-dasharray') }, { strokeDashoffset: resRing.getAttribute('stroke-dashoffset'), duration: 1.3, ease: 'power3.out' }, T(32.35));
+tl.to('#s7', { opacity: 0, duration: .35 }, T(33.75));
+
+// ---------- S8: end card (VO 34.24–37.36) ----------
+show('#s8', T(33.7), .4);
+gsap.set('.ln2', { strokeDasharray: 1, strokeDashoffset: 1, opacity: 0 });
+gsap.set('.dot2', { scale: 0, transformOrigin: '50% 50%' });
+tl.set('.ln2', { opacity: 1, stagger: .07 }, T(33.95))
+  .to('.ln2', { strokeDashoffset: 0, autoRound: false, duration: .7, stagger: .07, ease: 'power2.inOut' }, T(33.95))
+  .to('.dot2', { scale: 1, duration: .5, ease: 'back.out(4)' }, T(34.55))
+  .fromTo('#ay', { opacity: 0, y: 24, filter: 'blur(12px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: .7 }, T(35.15))
+  .fromTo('#al', { opacity: 0, y: 24, filter: 'blur(12px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: .8 }, T(36.4))
+  .to('#foot', { opacity: 1, duration: .8 }, T(37.6))
+  .to('#s8 .glow', { scale: 1.15, duration: 6, ease: 'none' }, T(33.7))
+  .to('#fade', { opacity: 1, duration: .8, ease: 'power1.in' }, T(41.2))
+  .to({}, { duration: .01 }, T(42.0));
+
+window.__duration = tl.duration();
+window.__seek = t => { tl.time(t, false); };
+if (!/capture/.test(location.search)) tl.play();
+</script>
+</body>
+</html>

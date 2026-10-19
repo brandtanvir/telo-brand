@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Telo | How it works (promo)</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/app.css">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;background:#000;overflow:hidden}
+  p,h1,h2,h3{margin:0}
+  .stage{position:relative;width:1920px;height:1080px;overflow:hidden;background:#050806;font-family:var(--f-sans);color:var(--bone)}
+  .L{position:absolute;inset:0;opacity:0;overflow:hidden}
+  .w{display:inline-block;will-change:transform,filter,opacity}
+  .serif{font-family:var(--f-serif);font-style:italic;font-weight:400;letter-spacing:-.02em}
+  .lime{color:var(--lime)} .green{color:#4E8A1C}
+  .mono{font-family:var(--f-mono);font-size:20px;letter-spacing:.08em;text-transform:uppercase}
+  .kin{font-size:118px;line-height:1;font-weight:300;letter-spacing:-.05em}
+  .ctr{position:absolute;left:0;right:0;text-align:center}
+  img{display:block}
+  .grain{position:absolute;inset:-20%;z-index:80;pointer-events:none;opacity:.055;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .vig{position:absolute;inset:0;z-index:79;pointer-events:none;background:radial-gradient(120% 90% at 50% 50%,transparent 62%,rgba(0,0,0,.32))}
+  .fade{position:absolute;inset:0;z-index:90;background:#000;pointer-events:none}
+
+  /* HUD (steps) */
+  .hud{position:absolute;z-index:70;left:96px;right:96px;top:64px;display:flex;justify-content:space-between;align-items:center;opacity:0}
+  .hud__l{display:flex;align-items:center;gap:22px}
+  .hud__segs{display:flex;gap:8px}
+  .hud__segs i{position:relative;width:64px;height:4px;border-radius:4px;background:rgba(127,127,127,.3);overflow:hidden}
+  .hud__segs b{position:absolute;inset:0;background:var(--lime);transform-origin:left;transform:scaleX(0)}
+  .hud__n{font-family:var(--f-mono);font-size:22px;letter-spacing:.06em;font-variant-numeric:tabular-nums}
+
+  /* A: why */
+  #A{background:#040605}
+  #pulse{position:absolute;left:0;top:560px;width:1920px;height:200px;overflow:visible}
+  #A .t{top:330px}
+  /* B: years before */
+  #B{background:radial-gradient(60% 70% at 50% 60%,#0E3A2D,#050806 75%)}
+  #B .t{top:250px}
+  .ruler{position:absolute;left:0;top:640px;width:3600px;height:160px}
+  .ruler .tick{position:absolute;top:0;width:2px;height:40px;background:rgba(245,243,234,.35)}
+  .ruler .tick.s{height:18px;background:rgba(245,243,234,.18)}
+  .ruler .age{position:absolute;top:56px;transform:translateX(-50%);font-family:var(--f-mono);font-size:26px;color:rgba(245,243,234,.55)}
+  .zone{position:absolute;top:-40px;height:12px;border-radius:12px;background:var(--lime);box-shadow:0 0 30px rgba(201,242,107,.5);transform-origin:left}
+  .zone__lbl{position:absolute;top:-96px;font-family:var(--f-mono);font-size:22px;letter-spacing:.06em;color:var(--lime);white-space:nowrap}
+  .warn{position:absolute;top:-52px;width:36px;height:36px;margin-left:-18px;border-radius:50%;border:3px solid var(--watch)}
+  .warn__lbl{position:absolute;top:-100px;transform:translateX(-50%);font-family:var(--f-mono);font-size:22px;letter-spacing:.06em;color:var(--watch);white-space:nowrap}
+  /* C: how it works */
+  #C{background:#050806}
+  #C .t{top:380px}
+  .dots4{position:absolute;left:50%;top:600px;transform:translateX(-50%);display:flex;gap:56px}
+  .dots4 span{display:grid;justify-items:center;gap:16px}
+  .dots4 i{width:22px;height:22px;border-radius:50%;background:var(--lime)}
+  .dots4 b{font-family:var(--f-mono);font-weight:400;font-size:22px;letter-spacing:.08em;color:rgba(245,243,234,.7)}
+  .zoomer{position:absolute;left:50%;top:50%;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;background:var(--bone);transform:scale(0);z-index:60}
+  /* step common */
+  .num{position:absolute;font-size:520px;font-weight:200;letter-spacing:-.08em;line-height:.8;color:transparent;-webkit-text-stroke:2px rgba(14,58,45,.18)}
+  .step__t{position:absolute;left:120px;top:300px}
+  .step__t .mono{display:block;margin-bottom:28px;color:#4E8A1C}
+  .step__t h2{font-size:150px;font-weight:300;letter-spacing:-.06em;line-height:.9}
+  .step__t p{font-size:46px;font-weight:300;letter-spacing:-.03em;line-height:1.15;margin-top:34px;max-width:17ch}
+  /* D: test */
+  #D{background:var(--bone);color:var(--pine)}
+  #D .num{right:-40px;top:120px}
+  .grid112{position:absolute;left:880px;top:250px;display:grid;grid-template-columns:repeat(16,40px);gap:16px}
+  .grid112 i{width:40px;height:40px;border-radius:50%;background:rgba(14,58,45,.08)}
+  .cnt{position:absolute;left:880px;top:800px;display:flex;align-items:baseline;gap:20px}
+  .cnt b{font-size:120px;font-weight:300;letter-spacing:-.06em;line-height:1;font-variant-numeric:tabular-nums}
+  .cnt span{font-size:40px;letter-spacing:-.02em}
+  .chipz{position:absolute;padding:12px 20px;border-radius:99px;background:#fff;box-shadow:0 20px 40px -20px rgba(14,58,45,.35);font-size:24px;color:var(--pine);display:flex;align-items:center;gap:10px;opacity:0}
+  .chipz i{width:10px;height:10px;border-radius:50%;background:var(--leaf)}
+  /* E: scan */
+  #E{background:#0B1F18}
+  #E .ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+  #E .tint{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,37,25,.9) 0%,rgba(8,37,25,.55) 38%,rgba(8,37,25,.1) 70%)}
+  .dotgrid{position:absolute;inset:0;background-image:radial-gradient(rgba(201,242,107,.35) 1.5px,transparent 1.6px);background-size:36px 36px;opacity:0}
+  #E .scanl{position:absolute;left:0;right:0;height:3px;top:0;background:var(--lime);box-shadow:0 0 40px 10px rgba(201,242,107,.45)}
+  .bracket{position:absolute;border:3px solid var(--lime);border-radius:18px;opacity:0}
+  .bracket span{position:absolute;left:-3px;top:-58px;padding:8px 16px;border-radius:12px;background:var(--lime);color:var(--pine);font-size:22px;font-weight:500;white-space:nowrap}
+  #E .step__t{color:var(--bone)}
+  #E .step__t .mono{color:var(--lime)}
+  /* F: plan */
+  #F{background:radial-gradient(55% 60% at 70% 50%,rgba(201,242,107,.45),rgba(201,242,107,0) 70%),#E4EBDB;color:var(--pine)}
+  #F .num{right:-40px;top:120px}
+  .doc{position:absolute;left:980px;top:200px;display:flex;align-items:center;gap:20px;padding:18px 28px 18px 18px;border-radius:26px;background:#fff;box-shadow:0 30px 60px -30px rgba(14,58,45,.4)}
+  .doc img{width:76px;height:76px;border-radius:50%;object-fit:cover;object-position:72% 28%}
+  .doc b{display:block;font-size:28px;font-weight:500}
+  .doc span{font-size:20px;color:var(--t-2)}
+  .tcard{position:absolute;left:980px;width:760px;display:flex;align-items:center;gap:26px;padding:28px 34px;border-radius:28px;background:#fff;box-shadow:0 30px 60px -34px rgba(14,58,45,.45)}
+  .tcard .ck{position:relative;flex:none;width:58px;height:58px;border-radius:50%;border:3px solid rgba(14,58,45,.2)}
+  .tcard .ck::after{content:"";position:absolute;left:18px;top:9px;width:14px;height:26px;border:solid var(--pine);border-width:0 5px 5px 0;transform:rotate(42deg) scale(0)}
+  .tcard.done .ck{background:var(--lime);border-color:var(--lime)}
+  .tcard.done .ck::after{transform:rotate(42deg) scale(1)}
+  .tcard b{display:block;font-size:36px;font-weight:450;letter-spacing:-.02em}
+  .tcard span{font-size:22px;color:var(--t-2)}
+  .tcard em{margin-left:auto;font-style:normal;font-family:var(--f-mono);font-size:20px;color:#4E8A1C}
+  /* G: live */
+  #G{background:radial-gradient(60% 60% at 60% 45%,#17503E,#0E3A2D 60%,#082519)}
+  #G .num{right:-40px;top:120px;-webkit-text-stroke:2px rgba(245,243,234,.12)}
+  #G .step__t .mono{color:var(--lime)}
+  #chart{position:absolute;left:860px;top:300px;width:940px;height:520px;overflow:visible}
+  .gbig{position:absolute;left:860px;top:180px;font-size:110px;font-weight:300;letter-spacing:-.06em;font-variant-numeric:tabular-nums}
+  .gbig small{font-size:36px;letter-spacing:0;margin-left:10px;color:rgba(245,243,234,.6)}
+  /* H: app */
+  #H{background:radial-gradient(45% 60% at 50% 50%,rgba(201,242,107,.5),rgba(201,242,107,0) 70%),#E4EBDB;color:var(--pine);perspective:2000px}
+  .phone{position:absolute;width:414px;height:868px;padding:12px;border-radius:66px;background:#0B1F18;box-shadow:0 0 0 2px #2A3D35 inset,0 70px 110px -40px rgba(8,37,25,.55)}
+  .phone__in{position:relative;width:390px;height:844px;border-radius:54px;overflow:hidden;background:var(--bone)}
+  .island{position:absolute;z-index:20;top:11px;left:50%;width:122px;height:35px;margin-left:-61px;border-radius:20px;background:#0B1F18}
+  .scr{position:absolute;inset:0}
+  #hp{left:753px;top:106px;transform-style:preserve-3d}
+  .feat{position:absolute;left:120px;top:0;width:560px}
+  .feat__row{position:absolute;left:0;width:560px;opacity:0}
+  .feat__row .mono{color:#4E8A1C;display:block;margin-bottom:18px}
+  .feat__row h3{font-size:84px;font-weight:300;letter-spacing:-.05em;line-height:.98}
+  .feat__row h3 em{font-family:var(--f-serif);font-style:italic;color:#4E8A1C}
+  .side{position:absolute;right:120px;width:520px;display:grid;gap:18px}
+  .pill{display:flex;align-items:center;gap:16px;padding:20px 26px;border-radius:22px;background:#fff;box-shadow:0 20px 40px -24px rgba(14,58,45,.4);font-size:28px;opacity:.35}
+  .pill.on{opacity:1}
+  .pill i{width:14px;height:14px;border-radius:50%;background:var(--leaf)}
+  #H .allin{position:absolute;left:0;right:0;top:470px;text-align:center}
+  /* I: end */
+  #I{background:radial-gradient(50% 55% at 50% 45%,#17503E 0%,#0E3A2D 60%,#082519 100%)}
+  #I .glow{position:absolute;left:50%;top:42%;width:1300px;height:1300px;margin:-650px 0 0 -650px;border-radius:50%;background:radial-gradient(closest-side,rgba(201,242,107,.24),rgba(201,242,107,0))}
+  #wm{position:absolute;left:50%;top:330px;width:560px;overflow:visible}
+  .cta{position:absolute;left:50%;top:640px;display:flex;align-items:center;gap:18px;height:92px;padding:0 44px;border-radius:99px;background:var(--lime);color:var(--pine);font-size:34px;font-weight:500;opacity:0;white-space:nowrap}
+  .cta i{width:16px;height:16px;border-radius:50%;background:var(--pine)}
+  .cursor{position:absolute;left:0;top:0;width:46px;opacity:0;z-index:5}
+  .url{position:absolute;left:0;right:0;top:790px;text-align:center;font-family:var(--f-mono);font-size:34px;letter-spacing:.04em;color:var(--bone)}
+  .url .car{display:inline-block;width:3px;height:36px;background:var(--lime);vertical-align:middle;margin-left:4px;opacity:0}
+  #I .foot{position:absolute;left:0;right:0;bottom:64px;text-align:center;color:rgba(245,243,234,.5);opacity:0}
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <div class="hud" id="hud"><div class="hud__l"><span class="mono" id="hudT">How Telo works</span><div class="hud__segs"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div></div><span class="hud__n" id="hudN">01 / 04</span></div>
+
+  <!-- A: why -->
+  <section class="L" id="A">
+    <svg id="pulse" viewBox="0 0 1920 200" fill="none">
+      <path id="pl1" pathLength="1" d="M0 100H620L660 100L690 40L730 170L760 70L790 100H960" stroke="#C9F26B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="pl2" pathLength="1" d="M960 100H1130L1160 100L1190 40L1230 170L1260 70L1290 100H1920" stroke="#C9F26B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <p class="ctr kin t" id="tA"><span class="w">Healthcare</span> <span class="w">waits</span> <span class="w">for</span> <span class="w">something</span><br><span class="w">to</span> <span class="w serif">break.</span></p>
+  </section>
+
+  <!-- B: years before -->
+  <section class="L" id="B">
+    <p class="ctr kin t" id="tB"><span class="w">We</span> <span class="w">built</span> <span class="w">Telo</span> <span class="w">for</span> <span class="w">the</span><br><span class="w">years</span> <span class="w serif lime">before</span> <span class="w">it</span> <span class="w">does.</span></p>
+    <div class="ruler" id="ruler"></div>
+  </section>
+
+  <!-- C: how it works -->
+  <section class="L" id="C">
+    <p class="ctr kin t" id="tC"><span class="w">Here’s</span> <span class="w">how</span> <span class="w">it</span> <span class="w serif lime">works.</span></p>
+    <div class="dots4" id="dots4"><span><i></i><b>Test</b></span><span><i></i><b>Scan</b></span><span><i></i><b>Plan</b></span><span><i></i><b>Live</b></span></div>
+    <div class="zoomer" id="zoomer"></div>
+  </section>
+
+  <!-- D: test -->
+  <section class="L" id="D">
+    <div class="num" id="nD">01</div>
+    <div class="step__t" id="tD"><span class="mono">Step one</span><h2>Test.</h2><p>One at-home draw. <em class="serif green">112</em> biomarkers.</p></div>
+    <div class="grid112" id="g112"></div>
+    <div class="cnt" id="cnt"><b id="cntN">0</b><span>biomarkers</span></div>
+    <div class="chipz" style="left:1500px;top:170px"><i></i>ApoB</div>
+    <div class="chipz" style="left:1640px;top:470px"><i></i>HbA1c</div>
+    <div class="chipz" style="left:1580px;top:760px"><i></i>hs-CRP</div>
+    <div class="chipz" style="left:820px;top:170px"><i></i>Vitamin D</div>
+    <div class="chipz" style="left:1290px;top:880px"><i></i>Testosterone</div>
+  </section>
+
+  <!-- E: scan -->
+  <section class="L" id="E">
+    <img class="ph" id="ePh" src="../assets/photos/maya.jpg" alt="">
+    <div class="tint"></div>
+    <div class="dotgrid" id="dg"></div>
+    <div class="scanl" id="eScan"></div>
+    <div class="step__t" id="tE"><span class="mono">Step two</span><h2>Scan.</h2><p>A full-body MRI sees what you <em class="serif lime">can’t feel.</em></p></div>
+    <div class="bracket" id="br1" style="left:1150px;top:300px;width:300px;height:240px"><span>Heart · clear</span></div>
+    <div class="bracket" id="br2" style="left:1440px;top:560px;width:280px;height:220px"><span>Visceral fat · 0.6 lb</span></div>
+    <div class="bracket" id="br3" style="left:1100px;top:640px;width:260px;height:200px"><span>Lean mass · top 15%</span></div>
+  </section>
+
+  <!-- F: plan -->
+  <section class="L" id="F">
+    <div class="num" id="nF">03</div>
+    <div class="step__t" id="tF"><span class="mono">Step three</span><h2>Plan.</h2><p>Three small actions <em class="serif green">a day.</em></p></div>
+    <div class="doc" id="doc"><img src="../assets/photos/clinician.jpg" alt=""><div><b>Dr. Lena Ortiz</b><span>built your plan · 2 min ago</span></div></div>
+    <div class="tcard" id="tc1" style="top:380px"><span class="ck"></span><div><b>Zone 2 walk</b><span>Move · 35 minutes</span></div><em>+0.4 yrs</em></div>
+    <div class="tcard" id="tc2" style="top:560px"><span class="ck"></span><div><b>30g protein breakfast</b><span>Eat · Greek yoghurt + oats</span></div><em>+0.3 yrs</em></div>
+    <div class="tcard" id="tc3" style="top:740px"><span class="ck"></span><div><b>Lights out by 22:45</b><span>Sleep · your weakest pillar</span></div><em>+0.5 yrs</em></div>
+  </section>
+
+  <!-- G: live -->
+  <section class="L" id="G">
+    <div class="num" id="nG">04</div>
+    <div class="step__t" id="tG"><span class="mono">Step four</span><h2>Live.</h2><p>Retest every quarter. Watch your Telo age <em class="serif lime">fall.</em></p></div>
+    <div class="gbig" id="gbig"><span id="gN">41.0</span><small>Telo age</small></div>
+    <svg id="chart" viewBox="0 0 940 520" fill="none">
+      <g stroke="rgba(245,243,234,.1)" stroke-width="2"><path d="M0 120H940M0 260H940M0 400H940"/></g>
+      <path id="gArea" d="M40 120 C200 140 260 190 330 230 S520 330 610 350 S820 410 900 440 V520 H40Z" fill="rgba(201,242,107,.12)"/>
+      <path id="gLine" pathLength="1" d="M40 120 C200 140 260 190 330 230 S520 330 610 350 S820 410 900 440" stroke="#C9F26B" stroke-width="6" stroke-linecap="round"/>
+      <g id="qdots">
+        <g class="qd"><circle cx="40" cy="120" r="14" fill="#0E3A2D" stroke="#F5F3EA" stroke-width="5"/><text x="40" y="500" text-anchor="middle" font-family="Geist Mono" font-size="22" fill="rgba(245,243,234,.6)">Q1 · 41.0</text></g>
+        <g class="qd"><circle cx="330" cy="230" r="14" fill="#0E3A2D" stroke="#F5F3EA" stroke-width="5"/><text x="330" y="500" text-anchor="middle" font-family="Geist Mono" font-size="22" fill="rgba(245,243,234,.6)">Q2 · 38.9</text></g>
+        <g class="qd"><circle cx="610" cy="350" r="14" fill="#0E3A2D" stroke="#F5F3EA" stroke-width="5"/><text x="610" y="500" text-anchor="middle" font-family="Geist Mono" font-size="22" fill="rgba(245,243,234,.6)">Q3 · 36.4</text></g>
+        <g class="qd"><circle cx="900" cy="440" r="18" fill="#C9F26B"/><text x="900" y="500" text-anchor="middle" font-family="Geist Mono" font-size="22" fill="#C9F26B">Q4 · 34.8</text></g>
+      </g>
+    </svg>
+  </section>
+
+  <!-- H: app -->
+  <section class="L" id="H">
+    <p class="ctr kin allin" id="allin"><span class="w">All</span> <span class="w">in</span> <span class="w">one</span> <span class="w serif green">app.</span></p>
+    <div class="feat">
+      <div class="feat__row" id="f1" style="top:380px"><span class="mono">01 · Biomarkers</span><h3>Track every <em>marker.</em></h3></div>
+      <div class="feat__row" id="f2" style="top:380px"><span class="mono">02 · Care team</span><h3>Message your <em>care team.</em></h3></div>
+      <div class="feat__row" id="f3" style="top:380px"><span class="mono">03 · Booking</span><h3>Book a draw <em>in seconds.</em></h3></div>
+    </div>
+    <div class="phone" id="hp"><div class="phone__in"><span class="island"></span>
+      <div class="scr" id="hs1" data-screen="markers"></div>
+      <div class="scr" id="hs2" data-screen="care"></div>
+      <div class="scr" id="hs3" data-screen="booking"></div>
+    </div></div>
+    <div class="side" id="side" style="top:360px">
+      <div class="pill" id="p1"><i></i>112 markers, scored by category</div>
+      <div class="pill" id="p2"><i></i>Replies from your clinician in ~2h</div>
+      <div class="pill" id="p3"><i></i>At-home draw, booked in 30s</div>
+    </div>
+  </section>
+
+  <!-- I: end -->
+  <section class="L" id="I">
+    <div class="glow"></div>
+    <svg id="wm" viewBox="-1 18 181 88" fill="none">
+      <g stroke="#F5F3EA" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round">
+        <path class="lnI" pathLength="1" d="M12 24V86Q12 100 26 100H29"/><path class="lnI" pathLength="1" d="M3 56H28"/>
+        <path class="lnI" pathLength="1" d="M41 78H85A22 22 0 1 0 79.85 92.14"/><path class="lnI" pathLength="1" d="M104 24V86Q104 100 118 100"/>
+        <path class="lnI" pathLength="1" d="M172.35 72.68A22 22 0 1 1 156.32 56.65"/>
+      </g>
+      <circle class="dotI" cx="166.56" cy="62.44" r="4.6" fill="#C9F26B"/>
+    </svg>
+    <div class="cta" id="cta">Get your Telo age <i></i></div>
+    <svg class="cursor" id="cur" viewBox="0 0 24 24"><path d="M4 2l15 9.5-6.6 1.4 3.9 7.6-2.7 1.4-3.9-7.6L4 19z" fill="#fff" stroke="#0B1F18" stroke-width="1.4" stroke-linejoin="round"/></svg>
+    <p class="url" id="url"><span id="urlT"></span><span class="car" id="car"></span></p>
+    <p class="foot mono" id="foot">A DesignMonks concept · Telo Health</p>
+  </section>
+
+  <div class="vig"></div>
+  <div class="grain"></div>
+  <div class="fade" id="fade"></div>
+</div>
+
+<script src="../js/screens.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+document.querySelectorAll('[data-screen] img').forEach(i => { const s = i.getAttribute('src'); if (!/^(https?:|data:|\.\.)/.test(s)) i.src = '../' + s; });
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const O = 0.8, T = v => v + O;
+const tl = gsap.timeline({ paused: true, defaults: { ease: 'expo.out' } });
+const on = (sel, at, d = .01) => tl.to(sel, { opacity: 1, duration: d }, at);
+const off = (sel, at, d = .3) => tl.to(sel, { opacity: 0, duration: d, ease: 'power2.in' }, at);
+const blurIn = (sel, at, d = .7) => tl.fromTo(sel, { opacity: 0, y: 26, filter: 'blur(14px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: d }, at);
+// word-synced kinetic type: pass VO start time of each word
+const sync = (sel, times) => $$(`${sel} .w`).forEach((w, i) => blurIn(w, T(times[i]) - .05, .6));
+
+tl.to('#fade', { opacity: 0, duration: .5 }, 0);
+
+// ===== A: Healthcare waits for something to break. (0.16–2.16) =====
+on('#A', 0);
+gsap.set('#pl1,#pl2', { strokeDasharray: 1, strokeDashoffset: 1 });
+tl.to('#pl1', { strokeDashoffset: 0, autoRound: false, duration: 1.2, ease: 'power1.inOut' }, .15)
+  .to('#pl2', { strokeDashoffset: 0, autoRound: false, duration: 1.0, ease: 'power1.inOut' }, 1.35);
+sync('#tA', [0.16, 0.72, 1.12, 1.28, 1.64, 1.76]);
+// the break: line snaps, right half drops and dims
+tl.to('#pl2', { y: 60, rotation: 6, svgOrigin: '960 100', stroke: '#5c6b62', opacity: .4, duration: .9, ease: 'power3.in' }, T(1.8))
+  .to('#pl1', { stroke: '#5c6b62', duration: .4 }, T(1.8))
+  .to('#A', { x: 10, duration: .05, yoyo: true, repeat: 5, ease: 'none' }, T(1.8))
+  .to('#tA', { opacity: 0, y: -30, filter: 'blur(14px)', duration: .45, ease: 'power2.in' }, T(2.35));
+off('#A', T(2.75), .25);
+
+// ===== B: We built Telo for the years before it does. (2.96–5.28) =====
+on('#B', T(2.7), .3);
+(() => {
+  const r = $('#ruler'); let html = '';
+  for (let age = 20; age <= 95; age++) {
+    const x = (age - 20) * 46; html += `<i class="tick${age % 5 ? ' s' : ''}" style="left:${x}px"></i>`;
+    if (age % 10 === 0) html += `<span class="age" style="left:${x}px">${age}</span>`;
+  }
+  html += `<i class="zone" id="zone" style="left:${(30 - 20) * 46}px;width:${(58 - 30) * 46}px"></i><span class="zone__lbl" style="left:${(30 - 20) * 46}px">TELO · THE YEARS BEFORE</span>`;
+  html += `<i class="warn" style="left:${(64 - 20) * 46}px"></i><span class="warn__lbl" style="left:${(64 - 20) * 46}px">FIRST SYMPTOMS</span>`;
+  r.innerHTML = html;
+})();
+tl.fromTo('#ruler', { x: 500 }, { x: -300, duration: 3.6, ease: 'power2.out' }, T(2.7));
+tl.fromTo('#zone', { scaleX: 0 }, { scaleX: 1, duration: 1.4, ease: 'expo.inOut' }, T(4.1));
+tl.fromTo('.zone__lbl,.warn,.warn__lbl', { opacity: 0 }, { opacity: 1, duration: .5, stagger: .1 }, T(4.3));
+sync('#tB', [2.96, 3.12, 3.36, 3.76, 3.92, 4.08, 4.4, 4.8, 5.04]);
+tl.to('#tB,#ruler', { opacity: 0, filter: 'blur(12px)', duration: .4, ease: 'power2.in' }, T(5.55));
+off('#B', T(5.85), .2);
+
+// ===== C: Here's how it works. (5.84–6.72) → zoom into step 1 =====
+on('#C', T(5.8));
+sync('#tC', [5.84, 6.08, 6.24, 6.48]);
+tl.fromTo('#dots4 span', { opacity: 0, y: 30, scale: .6 }, { opacity: 1, y: 0, scale: 1, duration: .5, stagger: .08, ease: 'back.out(2)' }, T(6.2));
+tl.to('#tC', { opacity: 0, y: -40, duration: .3, ease: 'power2.in' }, T(6.95));
+tl.to('#dots4 span:not(:first-child)', { opacity: 0, duration: .2 }, T(6.95));
+tl.to('#zoomer', { scale: 70, duration: .65, ease: 'power3.in' }, T(7.0));
+off('#C', T(7.65), .01);
+
+// ===== HUD =====
+const segs = $$('.hud__segs b');
+on('#D', T(7.6));
+tl.to('#hud', { opacity: 1, duration: .4 }, T(7.7));
+gsap.set('#hud', { color: '#0E3A2D' });
+const step = (i, at, col) => { tl.to(segs[i], { scaleX: 1, duration: .6, ease: 'power2.out' }, at).call(() => { $('#hudN').textContent = `0${i + 1} / 04`; }, null, at); if (col) tl.to('#hud', { color: col, duration: .2 }, at); };
+
+// ===== D: Test (7.44–12.16) =====
+step(0, T(7.7));
+tl.fromTo('#nD', { xPercent: 40, opacity: 0 }, { xPercent: 0, opacity: 1, duration: 1.2 }, T(7.6));
+tl.fromTo('#tD .mono', { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: .5 }, T(7.6));
+tl.fromTo('#tD h2', { opacity: 0, y: 80, filter: 'blur(12px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: .7 }, T(7.95));
+tl.fromTo('#tD p', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .6 }, T(8.7));
+(() => { const g = $('#g112'); g.innerHTML = '<i></i>'.repeat(112); })();
+const dots = $$('#g112 i');
+tl.fromTo('#g112', { opacity: 0, scale: .96 }, { opacity: 1, scale: 1, duration: .6 }, T(8.6));
+// wave fill: column-major so it sweeps left → right
+const order = dots.map((d, i) => ({ d, k: (i % 16) * 7 + Math.floor(i / 16) })).sort((a, b) => a.k - b.k).map(o => o.d);
+tl.to(order, { backgroundColor: '#8FD63F', scale: 1, duration: .25, stagger: { each: 2.0 / 112 } , ease: 'power2.out' }, T(8.9));
+tl.fromTo(order, { scale: .6 }, { scale: 1, duration: .4, stagger: { each: 2.0 / 112 }, ease: 'back.out(3)' }, T(8.9));
+const cn = { v: 0 };
+tl.fromTo('#cnt', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: .5 }, T(8.9));
+tl.to(cn, { v: 112, duration: 2.0, ease: 'power1.in', onUpdate: () => $('#cntN').textContent = Math.round(cn.v) }, T(8.9));
+tl.fromTo('#D .chipz', { opacity: 0, scale: .6 }, { opacity: 1, scale: 1, duration: .5, stagger: .22, ease: 'back.out(2.2)' }, T(9.6));
+tl.to('#D .chipz', { y: -14, duration: 1.2, yoyo: true, repeat: 1, ease: 'sine.inOut', stagger: .1 }, T(10.4));
+// wipe out to E
+tl.to('#D', { clipPath: 'inset(0 100% 0 0)', duration: .6, ease: 'expo.inOut' }, T(12.2));
+gsap.set('#D', { clipPath: 'inset(0 0% 0 0)' });
+
+// ===== E: Scan (12.48–16.8) =====
+on('#E', T(12.15));
+gsap.set('#E', { clipPath: 'inset(0 0 0 100%)' });
+tl.to('#E', { clipPath: 'inset(0 0 0 0%)', duration: .6, ease: 'expo.inOut' }, T(12.2));
+step(1, T(12.45), '#F5F3EA');
+tl.fromTo('#ePh', { scale: 1.25 }, { scale: 1.05, duration: 4.8, ease: 'power1.out' }, T(12.2));
+tl.fromTo('#tE .mono', { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: .5 }, T(12.5));
+tl.fromTo('#tE h2', { opacity: 0, y: 80, filter: 'blur(12px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: .7 }, T(12.95));
+tl.fromTo('#tE p', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .6 }, T(14.0));
+tl.fromTo('#eScan', { top: -10 }, { top: 1090, duration: 1.4, ease: 'power1.inOut' }, T(13.3))
+  .fromTo('#eScan', { top: 1090 }, { top: -10, duration: 1.4, ease: 'power1.inOut', immediateRender: false }, T(14.8))
+  .to('#dg', { opacity: 1, duration: .6 }, T(13.4))
+  .to('#eScan', { opacity: 0, duration: .3 }, T(16.2));
+['#br1', '#br2', '#br3'].forEach((b, i) => tl.fromTo(b, { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: .55, ease: 'expo.out' }, T(14.6) + i * .45));
+tl.to('#E', { clipPath: 'inset(0 100% 0 0)', duration: .6, ease: 'expo.inOut' }, T(16.85));
+
+// ===== F: Plan (17.2–21.96) =====
+on('#F', T(16.8));
+gsap.set('#F', { clipPath: 'inset(0 0 0 100%)' });
+tl.to('#F', { clipPath: 'inset(0 0 0 0%)', duration: .6, ease: 'expo.inOut' }, T(16.85));
+step(2, T(17.2), '#0E3A2D');
+tl.fromTo('#nF', { xPercent: 40, opacity: 0 }, { xPercent: 0, opacity: 1, duration: 1.2 }, T(17.0));
+tl.fromTo('#tF .mono', { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: .5 }, T(17.2));
+tl.fromTo('#tF h2', { opacity: 0, y: 80, filter: 'blur(12px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: .7 }, T(17.7));
+tl.fromTo('#tF p', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .6 }, T(20.3));
+tl.fromTo('#doc', { opacity: 0, y: -40, scale: .9 }, { opacity: 1, y: 0, scale: 1, duration: .7 }, T(18.7));
+['#tc1', '#tc2', '#tc3'].forEach((c, i) => {
+  tl.fromTo(c, { opacity: 0, x: 140, rotationY: -25, transformPerspective: 1200 }, { opacity: 1, x: 0, rotationY: 0, duration: .8 }, T(19.3) + i * .22);
+  tl.call(() => $(c).classList.add('done'), null, T(20.45) + i * .38);
+  tl.fromTo(`${c} .ck`, { scale: 1 }, { scale: 1.25, duration: .15, yoyo: true, repeat: 1, ease: 'power2.out' }, T(20.45) + i * .38);
+});
+tl.to('#F', { clipPath: 'inset(0 100% 0 0)', duration: .6, ease: 'expo.inOut' }, T(22.15));
+
+// ===== G: Live (22.4–27.04) =====
+on('#G', T(22.1));
+gsap.set('#G', { clipPath: 'inset(0 0 0 100%)' });
+tl.to('#G', { clipPath: 'inset(0 0 0 0%)', duration: .6, ease: 'expo.inOut' }, T(22.15));
+step(3, T(22.4), '#F5F3EA');
+tl.fromTo('#nG', { xPercent: 40, opacity: 0 }, { xPercent: 0, opacity: 1, duration: 1.2 }, T(22.2));
+tl.fromTo('#tG .mono', { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: .5 }, T(22.4));
+tl.fromTo('#tG h2', { opacity: 0, y: 80, filter: 'blur(12px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: .7 }, T(22.95));
+tl.fromTo('#tG p', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .6 }, T(23.9));
+gsap.set('#gLine', { strokeDasharray: 1, strokeDashoffset: 1 });
+gsap.set('#gArea', { opacity: 0 });
+tl.fromTo('#gbig', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: .5 }, T(23.2));
+tl.to('#gLine', { strokeDashoffset: 0, autoRound: false, duration: 2.6, ease: 'power1.inOut' }, T(23.9));
+tl.to('#gArea', { opacity: 1, duration: 1.2 }, T(25.2));
+$$('.qd').forEach((q, i) => tl.fromTo(q, { opacity: 0, scale: 0, svgOrigin: q.querySelector('circle').getAttribute('cx') + ' ' + q.querySelector('circle').getAttribute('cy') }, { opacity: 1, scale: 1, duration: .45, ease: 'back.out(3)' }, T(23.95) + i * .78));
+const gn = { v: 41 };
+tl.to(gn, { v: 34.8, duration: 2.6, ease: 'power1.inOut', onUpdate: () => $('#gN').textContent = gn.v.toFixed(1) }, T(23.9));
+tl.to('#gbig', { color: '#C9F26B', duration: .4 }, T(26.4));
+tl.to('#hud', { opacity: 0, duration: .3 }, T(27.25));
+tl.to('#G', { opacity: 0, scale: .96, duration: .4, ease: 'power2.in' }, T(27.3));
+
+// ===== H: All in one app (27.6–33.12) =====
+on('#H', T(27.45), .3);
+sync('#allin', [27.6, 27.76, 27.92, 28.08]);
+gsap.set('#hp', { opacity: 0 });
+tl.to('#allin', { opacity: 0, y: -60, filter: 'blur(12px)', duration: .35, ease: 'power2.in' }, T(28.55));
+tl.fromTo('#hp', { opacity: 0, y: 500, rotationX: 30, rotationY: -20 }, { opacity: 1, y: 0, rotationX: 0, rotationY: -12, duration: 1.0 }, T(28.5));
+gsap.set(['#hs2', '#hs3'], { xPercent: 100 });
+tl.fromTo('#f1', { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: .6 }, T(28.7));
+tl.fromTo('#side', { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: .6 }, T(28.8));
+tl.call(() => { $('#p1').classList.add('on'); }, null, T(28.8));
+tl.to('#hp', { rotationY: 10, duration: 1.4, ease: 'power2.inOut' }, T(29.3));
+tl.from('#hs1 .a-cats li', { opacity: 0, x: 30, duration: .4, stagger: .07 }, T(29.0));
+// → care
+tl.to('#f1', { opacity: 0, x: 40, duration: .3, ease: 'power2.in' }, T(30.05))
+  .fromTo('#f2', { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: .6 }, T(30.15))
+  .to('#hs1', { xPercent: -30, duration: .6, ease: 'expo.inOut' }, T(30.1))
+  .to('#hs2', { xPercent: 0, duration: .6, ease: 'expo.inOut' }, T(30.1))
+  .call(() => { $('#p1').classList.remove('on'); $('#p2').classList.add('on'); }, null, T(30.15))
+  .to('#hp', { rotationY: -10, duration: 1.4, ease: 'power2.inOut' }, T(30.3))
+  .from('#hs2 .a-msg, #hs2 .a-file', { opacity: 0, y: 14, duration: .4, stagger: .12 }, T(30.4));
+// → booking
+tl.to('#f2', { opacity: 0, x: 40, duration: .3, ease: 'power2.in' }, T(31.5))
+  .fromTo('#f3', { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: .6 }, T(31.6))
+  .to('#hs2', { xPercent: -30, duration: .6, ease: 'expo.inOut' }, T(31.55))
+  .to('#hs3', { xPercent: 0, duration: .6, ease: 'expo.inOut' }, T(31.55))
+  .call(() => { $('#p2').classList.remove('on'); $('#p3').classList.add('on'); }, null, T(31.6))
+  .to('#hp', { rotationY: 6, duration: 1.2, ease: 'power2.inOut' }, T(31.8));
+tl.to('#H', { opacity: 0, duration: .35 }, T(33.4));
+
+// ===== I: Telo. Get your Telo age, at telo dot health. (33.92–37.12) =====
+on('#I', T(33.3), .35);
+gsap.set('#wm', { xPercent: -50 });
+gsap.set('.lnI', { strokeDasharray: 1, strokeDashoffset: 1, opacity: 0 });
+gsap.set('.dotI', { scale: 0, transformOrigin: '50% 50%' });
+gsap.set('#cta', { xPercent: -50 });
+tl.set('.lnI', { opacity: 1, stagger: .07 }, T(33.5))
+  .to('.lnI', { strokeDashoffset: 0, autoRound: false, duration: .7, stagger: .07, ease: 'power2.inOut' }, T(33.5))
+  .to('.dotI', { scale: 1, duration: .45, ease: 'back.out(4)' }, T(34.0))
+  .fromTo('#cta', { opacity: 0, y: 30, scale: .9 }, { opacity: 1, y: 0, scale: 1, duration: .6, ease: 'back.out(2)' }, T(34.75))
+  .fromTo('#cur', { opacity: 0, x: 1500, y: 980 }, { opacity: 1, x: 1080, y: 700, duration: .8, ease: 'power3.out' }, T(35.0))
+  .to('#cur', { scale: .85, duration: .08, yoyo: true, repeat: 1, transformOrigin: '20% 10%' }, T(35.85))
+  .to('#cta', { scale: .95, duration: .08, yoyo: true, repeat: 1 }, T(35.85))
+  .to('#cur', { opacity: 0, x: 1180, y: 820, duration: .6, ease: 'power2.in' }, T(36.3));
+const urlTxt = 'telo.health', ut = { v: 0 };
+tl.set('#car', { opacity: 1 }, T(36.05));
+tl.to(ut, { v: urlTxt.length, duration: .7, ease: 'none', onUpdate: () => $('#urlT').textContent = urlTxt.slice(0, Math.round(ut.v)) }, T(36.1));
+tl.fromTo('#car', { opacity: 1 }, { opacity: 0, duration: .25, repeat: 6, yoyo: true, ease: 'steps(1)', immediateRender: false }, T(36.9));
+tl.to('#foot', { opacity: 1, duration: .8 }, T(37.2));
+tl.to('#I .glow', { scale: 1.15, duration: 6, ease: 'none' }, T(33.3));
+tl.to('#fade', { opacity: 1, duration: .7, ease: 'power1.in' }, T(39.9));
+tl.to({}, { duration: .01 }, T(40.7));
+
+window.__duration = tl.duration();
+window.__seek = t => { tl.time(t, false); };
+if (!/capture/.test(location.search)) tl.play();
+</script>
+</body>
+</html>

@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Telo | Add years. Add life to them.</title>
+<meta name="description" content="Telo is a preventive longevity membership: 112 biomarkers, a full-body MRI and a clinician-led plan to lower your biological age.">
+<meta name="theme-color" content="#0E3A2D">
+<meta property="og:title" content="Telo | Add years. Add life to them.">
+<meta property="og:description" content="Preventive longevity care: 112 biomarkers, a full-body MRI and a clinician-led plan.">
+<meta property="og:image" content="assets/video/breath.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/logo/telo-appicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body class="is-loading">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="wordmark" viewBox="-1 18 181 88">
+      <g fill="none" stroke="currentColor" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 24V86Q12 100 26 100H29"/><path d="M3 56H28"/>
+        <path d="M41 78H85A22 22 0 1 0 79.85 92.14"/>
+        <path d="M104 24V86Q104 100 118 100"/>
+        <path d="M172.35 72.68A22 22 0 1 1 156.32 56.65"/>
+      </g>
+      <circle cx="166.56" cy="62.44" r="4.6" fill="var(--dot, #8FD63F)"/>
+    </symbol>
+    <symbol id="ring" viewBox="0 0 64 64">
+      <path d="M55.29 26.19A24 24 0 1 1 37.81 8.71" fill="none" stroke="currentColor" stroke-width="8.4" stroke-linecap="round"/>
+      <circle cx="48.97" cy="15.03" r="5.4" fill="var(--dot, #8FD63F)"/>
+    </symbol>
+    <symbol id="arrow" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="check" viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<!-- ============ PRELOADER ============ -->
+<div class="loader" aria-hidden="true">
+  <div class="loader__inner">
+    <svg class="loader__ring" viewBox="0 0 64 64">
+      <circle class="loader__track" cx="32" cy="32" r="24"/>
+      <path class="loader__arc" d="M55.29 26.19A24 24 0 1 1 37.81 8.71"/>
+      <circle class="loader__dot" cx="48.97" cy="15.03" r="5.4"/>
+    </svg>
+    <div class="loader__meta mono"><span class="loader__count">00</span><span>Measuring what matters</span></div>
+  </div>
+</div>
+
+<div class="cursor" aria-hidden="true"><span class="cursor__label mono">Play</span></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" data-nav>
+  <div class="nav__bar">
+    <a href="#top" class="nav__logo" aria-label="Telo home"><svg><use href="#wordmark"/></svg></a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#method">Method</a>
+      <a href="#biomarkers">Biomarkers</a>
+      <a href="#app">App</a>
+      <a href="#partners">For partners</a>
+      <a href="#pricing">Pricing</a>
+    </nav>
+    <div class="nav__actions">
+      <a href="login.html" class="nav__login">Log in</a>
+      <a href="login.html?mode=signup" class="btn btn--pine btn--sm nav__cta">Get your Telo age <i class="dot"></i></a>
+      <button class="nav__burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="menu" aria-hidden="true">
+  <nav class="menu__links">
+    <a href="#method">Method</a><a href="#biomarkers">Biomarkers</a><a href="#app">App</a><a href="#partners">For partners</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
+  </nav>
+  <a href="login.html?mode=signup" class="btn btn--lime">Get your Telo age <i class="dot dot--pine"></i></a>
+</div>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero" data-theme="light">
+  <div class="hero__glow" aria-hidden="true"><i class="g1"></i><i class="g2"></i><i class="g3"></i></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="wrap hero__wrap">
+    <div class="hero__copy">
+      <p class="eyebrow mono" data-reveal><span class="pulse"></span>Preventive longevity membership</p>
+      <h1 class="hero__title display" data-split>Add years.<br>Add <em>life</em> to them.</h1>
+      <p class="hero__sub" data-reveal>Telo finds what your annual check-up misses. 112 biomarkers, a full-body MRI and a clinician-led plan to keep you younger for longer.</p>
+      <div class="hero__ctas" data-reveal>
+        <a href="login.html?mode=signup" class="btn btn--pine hero__cta" data-magnetic>Get your Telo age <i class="dot"></i></a>
+        <a href="#method" class="btn btn--ghost">How it works <svg class="ico"><use href="#arrow"/></svg></a>
+      </div>
+    </div>
+
+    <aside class="agecard" data-float aria-label="Example Telo age result">
+      <div class="agecard__head mono"><span>Telo age</span><span class="agecard__live"><i></i>Live</span></div>
+      <div class="agecard__body">
+        <svg class="agecard__ring" viewBox="0 0 120 120" aria-hidden="true">
+          <circle cx="60" cy="60" r="50" class="trk"/>
+          <circle cx="60" cy="60" r="50" class="val" pathLength="100"/>
+        </svg>
+        <div class="agecard__num"><span data-count="36.4" data-decimals="1">0</span><small>yrs</small></div>
+      </div>
+      <div class="agecard__rows">
+        <div><span>Calendar age</span><b>41</b></div>
+        <div><span>Difference</span><b class="lime-ink">−4.6 yrs</b></div>
+      </div>
+      <svg class="agecard__spark" viewBox="0 0 220 44" preserveAspectRatio="none" aria-hidden="true"><path d="M0 10 C30 12 40 8 60 16 S100 22 120 26 S170 30 190 34 S210 36 220 38"/></svg>
+      <div class="agecard__foot mono"><span>Q1</span><span>Q2</span><span>Q3</span><span>Q4</span></div>
+    </aside>
+  </div>
+
+  <div class="wrap hero__trust">
+    <p class="hero__trustlabel" data-reveal>Trusted by forward-thinking clinics &amp; employers</p>
+    <ul class="logos" aria-label="Partner logos">
+      <li><span class="lg lg--1">NORTHFIELD<small>health</small></span></li>
+      <li><span class="lg lg--2">Kestrel<b>Labs</b></span></li>
+      <li><span class="lg lg--3">◐ meridian</span></li>
+      <li><span class="lg lg--4">ALDER&amp;CO</span></li>
+      <li><span class="lg lg--5">Fjordline</span></li>
+      <li><span class="lg lg--6">orbit<sup>+</sup></span></li>
+      <li><span class="lg lg--7">HALVORSEN</span></li>
+      <li><span class="lg lg--8">quanta·md</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ MANIFESTO ============ -->
+<section class="manifesto" data-theme="lime">
+  <div class="wrap manifesto__wrap">
+    <p class="manifesto__text" data-words>Telo is a longevity clinic in your pocket. It tests what your yearly check-up ignores, scans what you can’t yet feel, and turns it all into a plan your future self will thank you for.</p>
+    <div class="manifesto__foot">
+      <span class="mono">Telomeres: the protective caps at the ends of your DNA.</span>
+      <span class="mono">We protect yours.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ METHOD (sticky split) ============ -->
+<section class="method" id="method" data-theme="dark">
+  <div class="method__grid">
+    <div class="method__left">
+      <div class="method__head">
+        <h2 class="display h2" data-split>Longevity that works<br>the way you live</h2>
+      </div>
+      <ol class="steps">
+        <li class="step is-active" data-step="0">
+          <span class="step__n mono">01</span>
+          <div><h3>Test</h3><p><b>One draw, 112 biomarkers.</b> At-home or in-clinic. ApoB, HbA1c, hs-CRP, hormones, nutrients and more. Results in 7 days.</p></div>
+        </li>
+        <li class="step" data-step="1">
+          <span class="step__n mono">02</span>
+          <div><h3>Scan</h3><p><b>See what you can’t feel.</b> A 60-minute full-body MRI, DEXA and VO₂ max that catch early signs years before symptoms show.</p></div>
+        </li>
+        <li class="step" data-step="2">
+          <span class="step__n mono">03</span>
+          <div><h3>Plan</h3><p><b>Medicine, made personal.</b> Your clinician turns the data into a plan for sleep, training, nutrition and, when needed, prescriptions.</p></div>
+        </li>
+        <li class="step" data-step="3">
+          <span class="step__n mono">04</span>
+          <div><h3>Live</h3><p><b>Retest. Watch the number fall.</b> Quarterly retests and your wearables keep your Telo age honest and your plan up to date.</p></div>
+        </li>
+      </ol>
+    </div>
+    <div class="method__right">
+      <div class="method__media">
+        <figure class="mm is-active"><video src="assets/video/lab.mp4" poster="assets/video/lab.jpg" muted loop playsinline preload="metadata"></video></figure>
+        <figure class="mm"><video src="assets/video/clinician.mp4" poster="assets/video/clinician.jpg" muted loop playsinline preload="metadata"></video></figure>
+        <figure class="mm"><video src="assets/video/run.mp4" poster="assets/video/run.jpg" muted loop playsinline preload="metadata"></video></figure>
+        <figure class="mm"><video src="assets/video/together.mp4" poster="assets/video/together.jpg" muted loop playsinline preload="metadata"></video></figure>
+        <div class="method__hud mono">
+          <span class="method__hudn">01 / 04</span>
+          <span class="method__bar"><i></i></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BIOMARKERS ============ -->
+<section class="bio" id="biomarkers" data-theme="light">
+  <div class="wrap">
+    <div class="bio__head">
+      <div>
+        <h2 class="display h2" data-split>Your body, in <em>112</em> numbers</h2>
+      </div>
+      <p class="bio__lede" data-reveal>Standard labs tell you if you’re sick. Telo tells you how you’re aging, using optimal ranges from longevity research, not population averages.</p>
+    </div>
+
+    <div class="bio__panel" data-reveal>
+      <div class="bio__tabs" role="tablist" aria-label="Biomarker categories">
+        <button role="tab" aria-selected="true" data-cat="heart">Heart</button>
+        <button role="tab" aria-selected="false" data-cat="metabolic">Metabolic</button>
+        <button role="tab" aria-selected="false" data-cat="hormones">Hormones</button>
+        <button role="tab" aria-selected="false" data-cat="inflammation">Inflammation</button>
+        <button role="tab" aria-selected="false" data-cat="fitness">Fitness</button>
+        <span class="bio__tabind" aria-hidden="true"></span>
+      </div>
+      <div class="bio__body">
+        <div class="bio__summary">
+          <p class="mono bio__cat">Heart</p>
+          <div class="bio__score"><span class="bio__scoren">92</span><small>/100</small></div>
+          <p class="bio__note">Category score, weighted by clinical impact on healthy lifespan.</p>
+          <div class="bio__legend mono"><span><i class="lg-opt"></i>Optimal</span><span><i class="lg-ok"></i>Normal</span><span><i class="lg-watch"></i>Watch</span></div>
+        </div>
+        <ul class="bio__list" aria-live="polite"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APP ============ -->
+<section class="app" id="app" data-theme="light">
+  <div class="wrap app__wrap">
+    <div class="app__copy">
+      <h2 class="display h2" data-split>A care team that<br>never clocks out</h2>
+      <ul class="app__feats">
+        <li class="is-active" data-screen="0"><span class="mono">A</span><div><h3>Today</h3><p>Three small actions a day, ranked by how much life they add.</p></div></li>
+        <li data-screen="1"><span class="mono">B</span><div><h3>Trends</h3><p>Every biomarker, every retest, and your wearable data in one timeline.</p></div></li>
+        <li data-screen="2"><span class="mono">C</span><div><h3>Care team</h3><p>Message your clinician and coach. Replies within four hours.</p></div></li>
+      </ul>
+      <div class="stores" data-reveal>
+        <a href="#" class="store" data-store aria-label="Download on the App Store">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.37 12.6c.02 2.4 2.1 3.2 2.13 3.21-.02.06-.33 1.14-1.1 2.26-.66.97-1.35 1.94-2.43 1.96-1.06.02-1.4-.63-2.62-.63-1.21 0-1.6.61-2.6.65-1.05.04-1.85-1.05-2.52-2.02-1.37-1.98-2.42-5.6-1.01-8.04.7-1.21 1.95-1.98 3.3-2 1.03-.02 2 .7 2.63.7.63 0 1.81-.86 3.05-.73.52.02 1.98.21 2.92 1.59-.08.05-1.74 1.02-1.75 3.05zM14.37 5.3c.56-.68.93-1.62.83-2.56-.8.03-1.77.53-2.35 1.21-.52.6-.97 1.56-.85 2.48.9.07 1.81-.45 2.37-1.13z"/></svg>
+          <span><small>Download on the</small>App Store</span>
+        </a>
+        <a href="#" class="store" data-store aria-label="Get it on Google Play">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#C9F26B" d="M4.6 2.9 13.4 12l-8.8 9.1c-.36-.2-.6-.6-.6-1.1V4c0-.5.24-.9.6-1.1z"/><path fill="#8FD63F" d="m16.6 8.7-3.2 3.3-8.8-9.1c.27-.15.6-.17.93.02l11.07 5.78z"/><path fill="#F5F3EA" d="m16.6 15.3-11.07 5.78c-.33.19-.66.17-.93.02l8.8-9.1 3.2 3.3z"/><path fill="#DCE6D6" d="m20.3 10.7-3.7-2-3.2 3.3 3.2 3.3 3.7-2c.9-.47.9-2.13 0-2.6z"/></svg>
+          <span><small>Get it on</small>Google Play</span>
+        </a>
+        <p class="stores__rating"><b>4.9</b> <span aria-hidden="true">★★★★★</span><br><span class="mono">12k ratings · iOS &amp; Android</span></p>
+      </div>
+    </div>
+
+    <div class="app__stage">
+      <div class="app__orb" aria-hidden="true"></div>
+      <div class="phone" data-tilt>
+        <div class="phone__notch"></div>
+        <div class="phone__screens">
+          <!-- Today -->
+          <div class="scr is-active">
+            <div class="scr__top mono"><span>9:41</span><span>Tue 14</span></div>
+            <p class="scr__hi">Good morning, Maya</p>
+            <div class="scr__ring">
+              <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" class="trk"/><circle cx="60" cy="60" r="50" class="val" pathLength="100" style="--p:72"/></svg>
+              <div><b>34.8</b><span class="mono">Telo age</span></div>
+            </div>
+            <p class="mono scr__label">Today · 2 of 3 done</p>
+            <ul class="scr__tasks">
+              <li class="done"><i><svg><use href="#check"/></svg></i>Zone 2 walk · 35 min</li>
+              <li class="done"><i><svg><use href="#check"/></svg></i>30g protein breakfast</li>
+              <li><i></i>Lights out by 22:45</li>
+            </ul>
+          </div>
+          <!-- Trends -->
+          <div class="scr">
+            <div class="scr__top mono"><span>9:41</span><span>Trends</span></div>
+            <p class="scr__hi">ApoB</p>
+            <p class="scr__big">72 <small>mg/dL</small></p>
+            <p class="scr__delta mono">↓ 28% since March</p>
+            <svg class="scr__chart" viewBox="0 0 240 120" preserveAspectRatio="none"><defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C9F26B" stop-opacity=".6"/><stop offset="1" stop-color="#C9F26B" stop-opacity="0"/></linearGradient></defs><path d="M0 20 L60 34 L120 58 L180 74 L240 86 L240 120 L0 120Z" fill="url(#cg)"/><path d="M0 20 L60 34 L120 58 L180 74 L240 86" fill="none" stroke="#0E3A2D" stroke-width="2.5"/><g fill="#0E3A2D"><circle cx="60" cy="34" r="3.5"/><circle cx="120" cy="58" r="3.5"/><circle cx="180" cy="74" r="3.5"/><circle cx="240" cy="86" r="4.5" fill="#8FD63F"/></g></svg>
+            <div class="scr__months mono"><span>Mar</span><span>Jun</span><span>Sep</span><span>Dec</span></div>
+            <div class="scr__chips"><span>hs-CRP ↓</span><span>VO₂ max ↑</span><span>HbA1c →</span></div>
+          </div>
+          <!-- Care -->
+          <div class="scr">
+            <div class="scr__top mono"><span>9:41</span><span>Care team</span></div>
+            <div class="scr__doc"><img src="assets/video/clinician.jpg" alt=""><div><b>Dr. Lena Ortiz</b><span class="mono">Longevity physician</span></div></div>
+            <div class="bubble in">Your ApoB is down 28%. The plan is working 🌱</div>
+            <div class="bubble out">Amazing! Should I keep the same dose?</div>
+            <div class="bubble in">Yes. Let’s retest in 12 weeks and review together.</div>
+            <div class="scr__typing"><i></i><i></i><i></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="chip chip--a" data-depth="1.4"><svg><use href="#ring"/></svg><div><b>VO₂ max</b><span class="mono">46 · top 10%</span></div></div>
+      <div class="chip chip--b" data-depth="-1"><span class="mono">Sleep</span><b>7h 42m</b></div>
+      <div class="chip chip--c" data-depth="0.8"><span class="mono">Next retest</span><b>in 23 days</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HORIZONTAL GALLERY ============ -->
+<section class="hscroll" data-theme="dark" aria-label="A plan built around you">
+  <div class="hscroll__pin">
+    <div class="hscroll__grid">
+      <div class="hscroll__intro">
+        <h2 class="display h2" data-split>Small habits.<br><em>Compounding</em><br>years.</h2>
+        <div class="hscroll__lower">
+          <p class="hscroll__lede">Not a diet. Not a bootcamp. A handful of habits tuned to your biomarkers and retested every quarter.</p>
+          <ol class="pillars">
+            <li><button type="button" class="is-active" data-i="0"><span class="pillars__name">Stress</span><span class="mono">Resting HR −6 bpm</span></button></li>
+            <li><button type="button" data-i="1"><span class="pillars__name">Movement</span><span class="mono">VO₂ max +4</span></button></li>
+            <li><button type="button" data-i="2"><span class="pillars__name">Nutrition</span><span class="mono">ApoB −28%</span></button></li>
+            <li><button type="button" data-i="3"><span class="pillars__name">Recovery</span><span class="mono">Cortisol ↓ 18%</span></button></li>
+            <li><button type="button" data-i="4"><span class="pillars__name">Result</span><span class="mono">−4.6 yrs</span></button></li>
+          </ol>
+          <div class="hscroll__progress" aria-hidden="true"><i></i></div>
+        </div>
+      </div>
+      <div class="hscroll__viewport">
+    <div class="hscroll__track">
+      <article class="hcard">
+        <video src="assets/video/breath.mp4" poster="assets/video/breath.jpg" muted loop playsinline preload="none"></video>
+        <div class="hcard__cap"><span class="mono">Stress</span><h3>Four minutes of breathwork lowered Maya’s resting HR by 6 bpm.</h3></div>
+      </article>
+      <article class="hcard">
+        <video src="assets/video/field.mp4" poster="assets/video/field.jpg" muted loop playsinline preload="none"></video>
+        <div class="hcard__cap"><span class="mono">Movement</span><h3>Zone 2, three times a week. The most underrated drug there is.</h3></div>
+      </article>
+      <article class="hcard">
+        <video src="assets/video/nutrition.mp4" poster="assets/video/nutrition.jpg" muted loop playsinline preload="none"></video>
+        <div class="hcard__cap"><span class="mono">Nutrition</span><h3>Protein first, plants always. Meals that move the markers that matter.</h3></div>
+      </article>
+      <article class="hcard">
+        <video src="assets/video/sunbeams.mp4" poster="assets/video/sunbeams.jpg" muted loop playsinline preload="none"></video>
+        <div class="hcard__cap"><span class="mono">Recovery</span><h3>Twenty minutes outdoors. Measurably calmer cortisol.</h3></div>
+      </article>
+      <article class="hcard hcard--stat">
+        <p class="mono">Average after 12 months*</p>
+        <p class="hcard__big"><span data-count="4.6" data-decimals="1">0</span><small>yrs</small></p>
+        <p>younger biological age across Telo members who completed all four retests.</p>
+      </article>
+    </div>
+      </div>
+    </div>
+    <p class="hscroll__hint mono" aria-hidden="true">Swipe <i></i></p>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="stats" data-theme="light">
+  <div class="wrap stats__grid">
+    <div class="stat" data-reveal><p class="stat__n"><span data-count="112">0</span></p><p>biomarkers in every test, re-checked every quarter</p></div>
+    <div class="stat" data-reveal><p class="stat__n"><span data-count="1">0</span> in <span data-count="3">0</span></p><p>members find something actionable in their first scan</p></div>
+    <div class="stat" data-reveal><p class="stat__n"><span data-count="4">0</span>h</p><p>median reply time from your care team</p></div>
+    <div class="stat" data-reveal><p class="stat__n"><span data-count="96">0</span>%</p><p>of members renew after their first year</p></div>
+  </div>
+</section>
+
+<!-- ============ PARTNERS (B2B) ============ -->
+<section class="partners" id="partners" data-theme="dark">
+  <div class="wrap">
+    <div class="partners__head">
+      <h2 class="display h2" data-split>Bring longevity care<br>to your <em>people</em></h2>
+      <div class="seg" role="tablist" aria-label="Partner type">
+        <button role="tab" aria-selected="true" data-p="clinics">Clinics</button>
+        <button role="tab" aria-selected="false" data-p="employers">Employers</button>
+        <span class="seg__ind" aria-hidden="true"></span>
+      </div>
+    </div>
+
+    <div class="pgrid" data-pane="clinics">
+      <div class="pcard pcard--media">
+        <video src="assets/video/clinician.mp4" poster="assets/video/clinician.jpg" muted loop playsinline preload="none"></video>
+        <div class="pcard__over"><p class="mono">Telo for Clinics</p><h3>Launch a longevity service line in 30 days, without building the lab, MRI network or software.</h3></div>
+      </div>
+      <div class="pcard"><p class="pcard__n"><span data-count="38">0</span>%</p><p>avg. new cash-pay revenue per practice in year one*</p></div>
+      <div class="pcard"><h4>White-label app</h4><p>Your brand, our clinical engine. Patients see your name, and your clinicians get Telo’s decision support.</p></div>
+      <div class="pcard"><h4>Lab + imaging network</h4><p>2,400 draw sites and 180 MRI centers, booked straight from your EHR.</p></div>
+      <div class="pcard pcard--lime"><h4>Ready in 30 days</h4><p>Onboarding, training and launch marketing included.</p><a href="mailto:partners@telo.health?subject=Telo%20for%20Clinics" class="btn btn--pine btn--sm">Partner with Telo <svg class="ico"><use href="#arrow"/></svg></a></div>
+    </div>
+
+    <div class="pgrid" data-pane="employers" hidden>
+      <div class="pcard pcard--media">
+        <video src="assets/video/run.mp4" poster="assets/video/run.jpg" muted loop playsinline preload="none"></video>
+        <div class="pcard__over"><p class="mono">Telo for Employers</p><h3>The benefit people actually use: preventive care that shows up in fewer sick days and lower claims.</h3></div>
+      </div>
+      <div class="pcard"><p class="pcard__n"><span data-count="23">0</span>%</p><p>fewer sick days among participating teams*</p></div>
+      <div class="pcard"><h4>Anonymised insights</h4><p>Population-level health trends. No one sees individual data, ever.</p></div>
+      <div class="pcard"><h4>Global coverage</h4><p>Members in 14 countries, one contract, one dashboard.</p></div>
+      <div class="pcard pcard--lime"><h4>4.1× ROI</h4><p>Modelled return over three years from avoided claims.*</p><a href="mailto:partners@telo.health?subject=Telo%20for%20Employers%20demo" class="btn btn--pine btn--sm">Book a demo <svg class="ico"><use href="#arrow"/></svg></a></div>
+    </div>
+
+    <ul class="badges mono" data-reveal>
+      <li>HIPAA compliant</li><li>SOC 2 Type II</li><li>ISO 27001</li><li>GDPR</li><li>CLIA-certified labs</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="voices" data-theme="light">
+  <div class="wrap voices__head">
+    <h2 class="display h2" data-split>Younger on paper.<br>Younger in <em>person</em>.</h2>
+  </div>
+  <div class="marquee" data-marquee data-cursor="Drag">
+    <div class="marquee__track">
+      <figure class="quote"><blockquote>“My annual physical said I was fine. Telo found an ApoB that put me on the path my dad took. Nine months later it’s optimal.”</blockquote><figcaption><b>Daniel R., 44</b><span class="mono">Telo age −3.1</span></figcaption></figure>
+      <figure class="quote quote--lime"><blockquote>“It’s the first health thing that feels like it’s on my side, not judging me. The daily three are genius.”</blockquote><figcaption><b>Priya S., 38</b><span class="mono">Telo age −5.4</span></figcaption></figure>
+      <figure class="quote"><blockquote>“We rolled Telo out to 600 people. Participation is 71%, and nothing else in our benefits package comes close.”</blockquote><figcaption><b>Marta K.</b><span class="mono">Head of People, Fjordline</span></figcaption></figure>
+      <figure class="quote quote--pine"><blockquote>“The MRI caught a kidney cyst early. Small thing, handled. I sleep better knowing.”</blockquote><figcaption><b>James O., 57</b><span class="mono">Telo age −2.2</span></figcaption></figure>
+      <figure class="quote"><blockquote>“As a physician I was sceptical. The clinical rigour behind the ranges won me over.”</blockquote><figcaption><b>Dr. Aiko T.</b><span class="mono">Partner clinic, Meridian</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="pricing" id="pricing" data-theme="light">
+  <div class="wrap">
+    <div class="pricing__head">
+      <h2 class="display h2" data-split>Invest in the<br>longest thing you own</h2>
+      <div class="bill" role="group" aria-label="Billing period">
+        <span class="bill__m">Monthly</span>
+        <button class="toggle" aria-pressed="true" aria-label="Annual billing"><i></i></button>
+        <span class="bill__y is-on">Annual <em class="mono">save 15%</em></span>
+      </div>
+    </div>
+    <div class="plans">
+      <article class="plan" data-reveal>
+        <p class="plan__name">Essentials</p>
+        <p class="plan__price"><span class="cur">$</span><span class="amt" data-m="59" data-y="49">49</span><span class="per">/mo</span></p>
+        <p class="plan__desc">The baseline every adult deserves.</p>
+        <ul><li>112 biomarkers, 2× a year</li><li>Telo age + personal plan</li><li>App + wearable sync</li><li>Async clinician review</li></ul>
+        <a href="login.html?mode=signup&amp;plan=essentials" class="btn btn--line">Start Essentials</a>
+      </article>
+      <article class="plan plan--hero" data-reveal>
+        <span class="plan__tag mono">Most chosen</span>
+        <p class="plan__name">Complete</p>
+        <p class="plan__price"><span class="cur">$</span><span class="amt" data-m="149" data-y="129">129</span><span class="per">/mo</span></p>
+        <p class="plan__desc">Full-body clarity, every year.</p>
+        <ul><li>Everything in Essentials, 4× a year</li><li>Annual full-body MRI + DEXA</li><li>VO₂ max &amp; grip strength testing</li><li>Dedicated clinician + coach</li><li>Prescriptions when indicated</li></ul>
+        <a href="login.html?mode=signup&amp;plan=complete" class="btn btn--lime" data-magnetic>Start Complete <i class="dot dot--pine"></i></a>
+      </article>
+      <article class="plan" data-reveal>
+        <p class="plan__name">Partners</p>
+        <p class="plan__price plan__price--txt">Custom</p>
+        <p class="plan__desc">For clinics, employers and health plans.</p>
+        <ul><li>White-label or co-branded</li><li>Volume pricing from 50 seats</li><li>Population insights dashboard</li><li>Dedicated success team</li></ul>
+        <a href="#partners" class="btn btn--line">Talk to us</a>
+      </article>
+    </div>
+    <p class="fine mono">HSA/FSA eligible. Cancel anytime. *Telo is a concept brand. Figures are illustrative.</p>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq" data-theme="light">
+  <div class="wrap faq__wrap">
+    <div>
+      <h2 class="display h2" data-split>Good to know</h2>
+    </div>
+    <div class="acc">
+      <details open><summary>What is a “Telo age”?<i></i></summary><div><p>Your Telo age is a biological-age estimate built from 40+ validated biomarkers and functional tests. Unlike your calendar age, you can move it, and most members do within two retests.</p></div></details>
+      <details><summary>Is the full-body MRI safe?<i></i></summary><div><p>Yes. MRI uses magnetic fields, not radiation. Scans are read by two board-certified radiologists and reviewed with you by your Telo clinician.</p></div></details>
+      <details><summary>Does Telo replace my doctor?<i></i></summary><div><p>No. Telo works alongside your primary care. With your consent we share results and plans with your doctor, so everyone works from the same picture.</p></div></details>
+      <details><summary>Where is Telo available?<i></i></summary><div><p>Telo is live across the US, UK and EU, with 2,400 draw sites and 180 imaging partners. At-home draws are available in most metro areas.</p></div></details>
+      <details><summary>How is my data protected?<i></i></summary><div><p>End-to-end encryption, HIPAA and GDPR compliance, SOC 2 Type II audits. We never sell data, and you can export or delete it anytime.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final" data-theme="dark">
+  <video class="final__bg" src="assets/video/sunrise.mp4" poster="assets/video/sunrise.jpg" muted loop playsinline preload="none"></video>
+  <div class="final__shade"></div>
+  <div class="wrap final__wrap">
+    <h2 class="display final__title" data-split>The best time to start<br>was ten years ago.<br><em>The next best is today.</em></h2>
+    <a href="login.html?mode=signup" class="btn btn--lime btn--lg" data-magnetic>Get your Telo age <i class="dot dot--pine"></i></a>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer" data-theme="dark">
+  <div class="wrap">
+    <div class="footer__top">
+      <div class="footer__news">
+        <p class="h3">The Long Letter</p>
+        <p>One evidence-based longevity idea, every other Sunday.</p>
+        <form class="news" onsubmit="event.preventDefault();this.classList.add('is-sent')">
+          <input type="email" required placeholder="you@email.com" aria-label="Email address">
+          <button class="btn btn--lime btn--sm" type="submit">Subscribe</button>
+          <span class="news__ok mono">You’re in. See you Sunday.</span>
+        </form>
+      </div>
+      <div class="footer__cols">
+        <div><p class="mono">Product</p><a href="login.html">Log in</a><a href="#method">Method</a><a href="#biomarkers">Biomarkers</a><a href="#app">App</a><a href="#pricing">Pricing</a></div>
+        <div><p class="mono">Company</p><a href="#biomarkers">Science</a><a href="#app">Clinicians</a><a href="mailto:careers@telo.health">Careers</a><a href="mailto:press@telo.health">Press</a></div>
+        <div><p class="mono">Partners</p><a href="#partners">Clinics</a><a href="#partners">Employers</a><a href="mailto:partners@telo.health?subject=Health%20plans">Health plans</a><a href="brand.html">Brand</a></div>
+      </div>
+    </div>
+    <svg class="footer__mark" viewBox="-1 18 181 88" aria-label="telo">
+      <g fill="none" stroke="currentColor" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round">
+        <path pathLength="1" d="M12 24V86Q12 100 26 100H29"/><path pathLength="1" d="M3 56H28"/>
+        <path pathLength="1" d="M41 78H85A22 22 0 1 0 79.85 92.14"/>
+        <path pathLength="1" d="M104 24V86Q104 100 118 100"/>
+        <path pathLength="1" d="M172.35 72.68A22 22 0 1 1 156.32 56.65"/>
+      </g>
+      <circle class="footer__dot" cx="166.56" cy="62.44" r="4.6"/>
+    </svg>
+    <div class="footer__legal mono">
+      <span>© 2026 Telo Health, Inc. A concept brand.</span>
+      <span><a href="mailto:privacy@telo.health">Privacy</a> · <a href="mailto:legal@telo.health">Terms</a> · <a href="mailto:access@telo.health">Accessibility</a></span>
+      <span>Footage: Mixkit (free license)</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast mono" role="status" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/site.js"></script>
+</body>
+</html>
